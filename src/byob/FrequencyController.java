@@ -6,11 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,9 +28,25 @@ public class FrequencyController implements Initializable {
     @FXML private Slider sliderMaxChangeFrequency;
 
     @FXML private ToggleButton toggleFixedFrequency;
+    @FXML private ToggleButton toggleFullDay;
 
     @FXML private GridPane minVariableFrequencyGridPane;
     @FXML private GridPane maxVariableFrequencyGridPane;
+
+    @FXML private GridPane minHourGridPane;
+    @FXML private GridPane maxHourGridPane;
+
+    @FXML private Text textMinHour;
+    @FXML private Text textMaxHour;
+
+    @FXML private Slider sliderMinHour;
+    @FXML private Slider sliderMaxHour;
+
+    @FXML private DatePicker sleepModeDatePicker;
+
+    @FXML private Slider sliderContacts;
+
+    @FXML private Text textContacts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,6 +69,27 @@ public class FrequencyController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 textMaxChangeFrequency.setText(String.format("%.0f", newValue));
+            }
+        });
+
+        sliderMinHour.valueProperty().addListener( new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                textMinHour.setText(String.format("%.0f", newValue));
+            }
+        });
+
+        sliderMaxHour.valueProperty().addListener( new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                textMaxHour.setText(String.format("%.0f", newValue));
+            }
+        });
+
+        sliderContacts.valueProperty().addListener( new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                textContacts.setText(String.format("%.0f", newValue));
             }
         });
     }
@@ -86,6 +126,35 @@ public class FrequencyController implements Initializable {
             maxVariableFrequencyGridPane.setManaged(true);
             sliderMinChangeFrequency.setManaged(true);
             sliderMaxChangeFrequency.setManaged(true);
+        }
+    }
+
+    @FXML
+    private void handleToggleFullDay(ActionEvent event) {
+
+        if (toggleFullDay.isSelected()) {
+            minHourGridPane.setVisible(false);
+            sliderMinHour.setVisible(false);
+            sliderMaxHour.setVisible(false);
+            maxHourGridPane.setVisible(false);
+            //sleepModeDatePicker.setVisible(true);
+            minHourGridPane.setManaged(false);
+            maxHourGridPane.setManaged(false);
+            sliderMaxHour.setManaged(false);
+            sliderMinHour.setManaged(false);
+            //sleepModeDatePicker.setManaged(true);
+        }
+        else{
+            minHourGridPane.setVisible(true);
+            sliderMinHour.setVisible(true);
+            sliderMaxHour.setVisible(true);
+            //sleepModeDatePicker.setVisible(false);
+            maxHourGridPane.setVisible(true);
+            minHourGridPane.setManaged(true);
+            maxHourGridPane.setManaged(true);
+            sliderMaxHour.setManaged(true);
+            sliderMinHour.setManaged(true);
+            //sleepModeDatePicker.setManaged(false);
         }
     }
 
