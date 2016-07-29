@@ -17,7 +17,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FrequencyController implements Initializable {
+public class PaneController implements Initializable {
 
     @FXML private Text textChangeFrequency;
     @FXML private Text textMinChangeFrequency;
