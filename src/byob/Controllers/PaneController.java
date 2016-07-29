@@ -1,19 +1,17 @@
-package byob;
+package byob.controllers;
 
+import byob.entities.ConfigurationFile;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -156,6 +154,14 @@ public class PaneController implements Initializable {
             sliderMinHour.setManaged(true);
             //sleepModeDatePicker.setManaged(false);
         }
+    }
+
+    private void packageConfiguration(){
+        ConfigurationFile configurationFile = new ConfigurationFile();
+    }
+
+    private void submitConfiguration(){
+        packageConfiguration();
     }
 
 }
