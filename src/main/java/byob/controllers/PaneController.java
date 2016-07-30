@@ -1,5 +1,6 @@
 package byob.controllers;
 
+import byob.Utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;
 import javafx.beans.value.ChangeListener;
@@ -179,18 +180,28 @@ public class PaneController implements Initializable {
 
     private ConfigurationFile packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
-        configurationFile.setProxy(textProxy.getText());
-        configurationFile.setUserAgent(textProxy.getText());
-        configurationFile.setContacts(textContacts.getText());
-        configurationFile.setSleepModeDate(sleepModeDatePicker.getValue().toString());
+        //Optional<TextField> optTextField = Optional.ofNullable(textProxy);
+
+        configurationFile.setProxy(StringUtils.fromTextFieldToOptionalString(textProxy));
+        configurationFile.setUserAgent(StringUtils.fromTextFieldToOptionalString(textUserAgent));
+        configurationFile.setContacts(StringUtils.fromTextToOptionalString(textContacts));
+        configurationFile.setSleepModeDate(StringUtils.fromDatePickerToOptionalString(sleepModeDatePicker));
+
+        //configurationFile.setProxy(textProxy.getText());
+        //configurationFile.setUserAgent(textUserAgent.getText());
+        //configurationFile.setContacts(textContacts.getText());
+        //configurationFile.setSleepModeDate(sleepModeDatePicker.getValue().toString());
 
         //Check for Fixed Frequency
         if (checkToggleFixedFrequency()){
-            configurationFile.setFixedFrequency(textChangeFrequency.getText());
+            //configurationFile.setFixedFrequency(textChangeFrequency.getText());
+            configurationFile.setFixedFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
         }
         else {
-            configurationFile.setMinFrequency(textMinChangeFrequency.getText());
-            configurationFile.setMaxFrequency(textMaxChangeFrequency.getText());
+            configurationFile.setMinFrequency(StringUtils.fromTextToOptionalString(textMinChangeFrequency));
+            configurationFile.setMaxFrequency(StringUtils.fromTextToOptionalString(textMaxChangeFrequency));
+            //configurationFile.setMinFrequency(textMinChangeFrequency.getText());
+            //configurationFile.setMaxFrequency(textMaxChangeFrequency.getText());
         }
 
         //Check for Full Day
@@ -199,8 +210,8 @@ public class PaneController implements Initializable {
             configurationFile.setSleepModeMaxHour(DayHours.ELEVEN_PM.getName());
         }
         else {
-            configurationFile.setSleepModeMinHour(textMinHour.getText());
-            configurationFile.setSleepModeMaxHour(textMaxHour.getText());
+            configurationFile.setSleepModeMinHour(StringUtils.fromTextToOptionalString(textMinHour));
+            configurationFile.setSleepModeMaxHour(StringUtils.fromTextToOptionalString(textMaxHour));
         }
 
         return configurationFile;

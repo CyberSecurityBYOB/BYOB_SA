@@ -54,7 +54,7 @@ public class ConfigurationController {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), ConfigurationFile.class);
                 Method getter = pd.getReadMethod();
                 Object obj = getter.invoke(this.configurationFile);
-                if (obj instanceof String) {
+                if (obj != null && obj instanceof String) {
                     System.out.println(StringUtils.capitalize(field.getName()));
                     System.out.println(obj);
                 }
