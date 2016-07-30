@@ -3,6 +3,7 @@ package byob.entities;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Alessandro on 29/07/2016.
