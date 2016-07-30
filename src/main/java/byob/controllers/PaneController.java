@@ -1,5 +1,6 @@
 package byob.controllers;
 
+import byob.Utils.GenericList;
 import byob.Utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;

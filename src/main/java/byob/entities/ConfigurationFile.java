@@ -1,5 +1,6 @@
 package byob.entities;
 
+import byob.Utils.GenericList;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 @Data
 public class ConfigurationFile {
 
-    private ArrayList<String> urls;
+    private GenericList urls;
     private String proxy;
     private String userAgent;
     private String contacts;
@@ -24,6 +25,6 @@ public class ConfigurationFile {
     private String sleepModeMaxHour;
 
     public ConfigurationFile(){
-        this.urls = new ArrayList<String>();
+        this.urls = new GenericList<>(String.class);
     }
 }

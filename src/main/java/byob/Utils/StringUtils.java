@@ -36,15 +36,22 @@ public class StringUtils {
                ((String) obj).length() > 0;
     }
 
-    public static ArrayList<String> fromTextFieldsToStrings(ObservableList<TextField> textFields){
-        ArrayList<String> strings = new ArrayList<>();
+    public static GenericList fromTextFieldsToStrings(ObservableList<TextField> textFields){
+        GenericList strings = new GenericList(String.class);
         for (TextField textField : textFields){
             strings.add(textField.getText());
         }
         return strings;
     }
 
-    public static boolean isPrintableArrayList(ArrayList<Object> objects){
-        return objects.size() > 0 && ((String)objects.get(0)).length() > 0;
+    //public static boolean isPrintableArrayList(ArrayList<Object> objects){
+    //    return objects.size() > 0 && ((String)objects.get(0)).length() > 0;
+    //}
+
+    public static boolean isPrintableGenericList(Object genericList){
+        return genericList != null &&
+               genericList instanceof GenericList &&
+               ((GenericList)genericList).size() > 0 &&
+               ((String)((GenericList)genericList).get(0)).length() > 0;
     }
 }

@@ -1,5 +1,6 @@
 package byob.controllers;
 
+import byob.Utils.GenericList;
 import byob.Utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.FilePaths;
@@ -58,17 +59,15 @@ public class ConfigurationController {
                     lines.add((String) obj);
                 }
                 else {
-                    if (obj != null) {
-                        ArrayList<Object> strings = (ArrayList<Object>) obj;
-                        if (StringUtils.isPrintableArrayList(strings)) {
-                            System.out.println(StringUtils.capitalize(field.getName()));
-                            lines.add(field.getName());
+                    if (StringUtils.isPrintableGenericList(obj)) {
+                        GenericList strings = (GenericList) obj;
+                        System.out.println(StringUtils.capitalize(field.getName()));
+                        lines.add(field.getName());
 
-                            for (Object string : strings) {
-                                if (StringUtils.isPrintableString(string)) {
-                                    System.out.println(string);
-                                    lines.add((String) string);
-                                }
+                        for (Object string : strings) {
+                            if (StringUtils.isPrintableString(string)) {
+                                System.out.println(string);
+                                lines.add((String) string);
                             }
                         }
                     }
