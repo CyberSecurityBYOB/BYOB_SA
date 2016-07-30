@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_16_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/byob/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/byob/entities/ConfigurationFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/byob/enums/DayHours.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/byob/views/view_main.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/byob/Controllers/ConfigurationController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/byob/Controllers/PaneController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/byob/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/byob/entities/ConfigurationFile.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/byob/views/view_main.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Implementation of PackageConfiguration, DayHours Enum">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BYOB_SA.iml" afterPath="$PROJECT_DIR$/BYOB_SA.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" afterPath="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" afterPath="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,11 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PaneController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PaneController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29928315">
-              <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1840#2108#0" expanded="true" />
@@ -110,8 +96,18 @@
                 <element signature="e#6423#6424#0" expanded="true" />
                 <element signature="e#6473#6474#0" expanded="true" />
                 <element signature="e#6534#6535#0" expanded="true" />
-                <element signature="e#7731#7732#0" expanded="true" />
-                <element signature="e#7769#7770#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigurationController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.82258064">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -166,6 +162,7 @@
         <option value="$PROJECT_DIR$/src/main/java/byob/entities/ConfigurationFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/byob/enums/DayHours.java" />
         <option value="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" />
       </list>
     </option>
   </component>
@@ -337,7 +334,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="enums" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -831,7 +828,7 @@
       <workItem from="1469871371010" duration="42000" />
       <workItem from="1469871438552" duration="84000" />
       <workItem from="1469882410096" duration="37000" />
-      <workItem from="1469883726195" duration="3560000" />
+      <workItem from="1469883726195" duration="4276000" />
     </task>
     <task id="LOCAL-00001" summary="Added FXML Structure for Stand Alone Application">
       <created>1469797933977</created>
@@ -893,25 +890,32 @@
       <option name="project" value="LOCAL" />
       <updated>1469871496127</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implementation of PackageConfiguration, DayHours Enum">
+      <created>1469887317798</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1469887317799</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24395000" />
+    <option name="totallyTimeSpent" value="25111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1762481" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1762481" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -925,7 +929,6 @@
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -954,7 +957,8 @@
     <MESSAGE value="Some folder , names refactor" />
     <MESSAGE value="Added very very very simple MVC structure&#10;&#10;ConfigurationController writes a file&#10;&#10;ConfigurationFile simply is an object passed to ConfigurationController just to make simple writing into a file&#10;&#10;view_main is a simple window with different buttons just to make some preferences" />
     <MESSAGE value="Fields in ConfigurationFile, integration with Lombok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fields in ConfigurationFile, integration with Lombok" />
+    <MESSAGE value="Implementation of PackageConfiguration, DayHours Enum" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of PackageConfiguration, DayHours Enum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -987,8 +991,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1023,8 +1025,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1059,8 +1059,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1095,8 +1093,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1131,8 +1127,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1167,8 +1161,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1203,8 +1195,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1253,8 +1243,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1295,8 +1283,6 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1374,13 +1360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27945206">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5112782">
@@ -1426,8 +1405,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29928315">
-          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1840#2108#0" expanded="true" />
@@ -1446,8 +1425,16 @@
             <element signature="e#6423#6424#0" expanded="true" />
             <element signature="e#6473#6474#0" expanded="true" />
             <element signature="e#6534#6535#0" expanded="true" />
-            <element signature="e#7731#7732#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82258064">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

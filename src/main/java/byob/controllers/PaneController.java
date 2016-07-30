@@ -177,7 +177,7 @@ public class PaneController implements Initializable {
         return this.toggleFixedFrequency.isSelected();
     }
 
-    private void packageConfiguration(){
+    private ConfigurationFile packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
         configurationFile.setProxy(textProxy.getText());
         configurationFile.setUserAgent(textProxy.getText());
@@ -203,10 +203,13 @@ public class PaneController implements Initializable {
             configurationFile.setSleepModeMaxHour(textMaxHour.getText());
         }
 
+        return configurationFile;
     }
 
     private void submitConfiguration(){
-        packageConfiguration();
+        ConfigurationFile configurationFile = packageConfiguration();
+        ConfigurationController configurationController = ConfigurationController.getInstance(configurationFile);
+        configurationController.writeFile();
     }
 
 }
