@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class PaneController implements Initializable {
 
+    //Frequency
     @FXML private Text textChangeFrequency;
     @FXML private Text textMinChangeFrequency;
     @FXML private Text textMaxChangeFrequency;
@@ -26,13 +28,15 @@ public class PaneController implements Initializable {
     @FXML private Slider sliderMaxChangeFrequency;
 
     @FXML private ToggleButton toggleFixedFrequency;
-    @FXML private ToggleButton toggleFullDay;
 
     @FXML private GridPane minVariableFrequencyGridPane;
     @FXML private GridPane maxVariableFrequencyGridPane;
 
+    //Sleep Mode
     @FXML private GridPane minHourGridPane;
     @FXML private GridPane maxHourGridPane;
+
+    @FXML private ToggleButton toggleFullDay;
 
     @FXML private Text textMinHour;
     @FXML private Text textMaxHour;
@@ -42,9 +46,16 @@ public class PaneController implements Initializable {
 
     @FXML private DatePicker sleepModeDatePicker;
 
+    //Contacts
     @FXML private Slider sliderContacts;
 
     @FXML private Text textContacts;
+
+    //Proxy
+    @FXML private TextField textProxy;
+
+    //UserAgent
+    @FXML private TextField textUserAgent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -158,6 +169,7 @@ public class PaneController implements Initializable {
 
     private void packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
+
     }
 
     private void submitConfiguration(){
