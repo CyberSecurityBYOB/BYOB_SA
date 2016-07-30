@@ -1,6 +1,7 @@
 package byob.controllers;
 
 import byob.entities.ConfigurationFile;
+import byob.enums.DayHours;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
+import javax.security.auth.login.Configuration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -167,8 +169,39 @@ public class PaneController implements Initializable {
         }
     }
 
+    private boolean checkToggleFullDay(){
+        return this.toggleFullDay.isSelected();
+    }
+
+    private boolean checkToggleFixedFrequency(){
+        return this.toggleFixedFrequency.isSelected();
+    }
+
     private void packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
+        configurationFile.setProxy(textProxy.getText());
+        configurationFile.setUserAgent(textProxy.getText());
+        configurationFile.setContacts(textContacts.getText());
+        configurationFile.setSleepModeDate(sleepModeDatePicker.getValue().toString());
+
+        //Check for Fixed Frequency
+        if (checkToggleFixedFrequency()){
+            configurationFile.setFixedFrequency(textChangeFrequency.getText());
+        }
+        else {
+            configurationFile.setMinFrequency(textMinChangeFrequency.getText());
+            configurationFile.setMaxFrequency(textMaxChangeFrequency.getText());
+        }
+
+        //Check for Full Day
+        if (checkToggleFullDay()){
+            configurationFile.setSleepModeMinHour(DayHours.MIDNIGHT_AM.getName());
+            configurationFile.setSleepModeMaxHour(DayHours.ELEVEN_PM.getName());
+        }
+        else {
+            configurationFile.setSleepModeMinHour(textMinHour.getText());
+            configurationFile.setSleepModeMaxHour(textMaxHour.getText());
+        }
 
     }
 

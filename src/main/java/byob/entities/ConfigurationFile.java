@@ -1,11 +1,14 @@
 package byob.entities;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 
 /**
  * Created by Alessandro on 29/07/2016.
  */
 
+@Data
 public class ConfigurationFile {
 
     private ArrayList<String> urls;
@@ -20,6 +23,6 @@ public class ConfigurationFile {
     private String sleepModeMaxHour;
 
     public ConfigurationFile(){
-        this.urls = new ArrayList<>();
+        this.urls = new ArrayList<String>();
     }
 }
