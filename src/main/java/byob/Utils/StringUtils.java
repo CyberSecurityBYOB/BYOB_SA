@@ -17,14 +17,20 @@ public class StringUtils {
     }
 
     public static String fromTextFieldToOptionalString(TextField textField) {
-        return Optional.ofNullable(textField).map(TextField::getText).get();
+        return Optional.ofNullable(textField).map(TextField::getText).orElse(null);
     }
 
     public static String fromDatePickerToOptionalString(DatePicker datePicker) {
-        return Optional.ofNullable(datePicker).map(DatePicker::getPromptText).get();
+        return Optional.ofNullable(datePicker).map(DatePicker::getValue).map(Object::toString).orElse(null);
     }
 
     public static String fromTextToOptionalString(Text text) {
-        return Optional.ofNullable(text).map(Text::getText).get();
+        return Optional.ofNullable(text).map(Text::getText).orElse(null);
+    }
+
+    public static boolean isPrintableString(Object obj) {
+        return obj != null &&
+               obj instanceof String &&
+               ((String) obj).length() > 0;
     }
 }

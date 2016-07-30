@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Alessandro on 29/07/2016.
@@ -54,9 +55,9 @@ public class ConfigurationController {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), ConfigurationFile.class);
                 Method getter = pd.getReadMethod();
                 Object obj = getter.invoke(this.configurationFile);
-                if (obj != null && obj instanceof String) {
-                    System.out.println(StringUtils.capitalize(field.getName()));
-                    System.out.println(obj);
+                if (StringUtils.isPrintableString(obj)){
+                        System.out.println(StringUtils.capitalize(field.getName()));
+                        System.out.println(obj);
                 }
                 //lines.add(field.getName());
                 //lines.add(f);

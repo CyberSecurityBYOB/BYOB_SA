@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="StringUtils with capitalize method">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BYOB_SA.iml" afterPath="$PROJECT_DIR$/BYOB_SA.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/byob/Utils/StringUtils.java" afterPath="$PROJECT_DIR$/src/main/java/byob/Utils/StringUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" afterPath="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" afterPath="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,27 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PaneController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5163934">
-              <caret line="185" column="85" selection-start-line="185" selection-start-column="85" selection-end-line="185" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6400#6401#0" expanded="true" />
-                <element signature="e#6454#6455#0" expanded="true" />
-                <element signature="e#6504#6505#0" expanded="true" />
-                <element signature="e#6565#6566#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StringUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/byob/Utils/StringUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="84" selection-start-line="23" selection-start-column="84" selection-end-line="23" selection-end-column="84" />
+              <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigurationController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ConfigurationController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.3251366">
+              <caret line="56" column="67" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -121,8 +101,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
               <folding>
-                <element signature="e#541#542#0" expanded="false" />
-                <element signature="e#569#570#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,7 +112,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,9 +159,9 @@
         <option value="$PROJECT_DIR$/src/main/java/byob/enums/FilePaths.java" />
         <option value="$PROJECT_DIR$/src/main/java/byob/entities/ConfigurationFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/byob/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/byob/Utils/StringUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java" />
       </list>
     </option>
   </component>
@@ -854,7 +835,7 @@
       <workItem from="1469871438552" duration="84000" />
       <workItem from="1469882410096" duration="37000" />
       <workItem from="1469883726195" duration="8763000" />
-      <workItem from="1469894333450" duration="5435000" />
+      <workItem from="1469894333450" duration="6509000" />
     </task>
     <task id="LOCAL-00001" summary="Added FXML Structure for Stand Alone Application">
       <created>1469797933977</created>
@@ -952,11 +933,17 @@
       <option name="project" value="LOCAL" />
       <updated>1469894920347</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Improved null checker with lambda functions">
+      <created>1469899797524</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1469899797524</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35033000" />
+    <option name="totallyTimeSpent" value="36107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1019,7 +1006,8 @@
     <MESSAGE value="Adjusted path with resources folder" />
     <MESSAGE value="Working write file without checks for null fields and url list support" />
     <MESSAGE value="StringUtils with capitalize method" />
-    <option name="LAST_COMMIT_MESSAGE" value="StringUtils with capitalize method" />
+    <MESSAGE value="Improved null checker with lambda functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved null checker with lambda functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1057,8 +1045,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
           <folding>
-            <element signature="e#541#542#0" expanded="false" />
-            <element signature="e#569#570#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1067,7 +1054,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,7 +1078,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1111,7 +1102,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1133,7 +1126,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,7 +1150,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1177,7 +1174,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1199,7 +1198,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1221,7 +1222,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1395,25 +1398,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/byob/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
-          <folding>
-            <element signature="e#541#542#0" expanded="false" />
-            <element signature="e#569#570#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/byob/entities/ConfigurationFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6075269">
@@ -1430,18 +1414,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/byob/entities/ConfigurationFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
-          <folding />
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/byob/Utils/StringUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/byob/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="84" selection-start-line="23" selection-start-column="84" selection-end-line="23" selection-end-column="84" />
+          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1450,8 +1436,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/PaneController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5163934">
-          <caret line="185" column="85" selection-start-line="185" selection-start-column="85" selection-end-line="185" selection-end-column="85" />
+        <state vertical-scroll-proportion="-0.22677596">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6400#6401#0" expanded="true" />
@@ -1459,6 +1445,24 @@
             <element signature="e#6504#6505#0" expanded="true" />
             <element signature="e#6565#6566#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/byob/Utils/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/byob/controllers/ConfigurationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3251366">
+          <caret line="56" column="67" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>
