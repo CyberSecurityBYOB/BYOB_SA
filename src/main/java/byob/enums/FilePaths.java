@@ -5,7 +5,7 @@ package byob.enums;
  */
 public enum FilePaths {
 
-    BYOB_SA ("../byob_config.txt");
+    BYOB_SA ("C:\\Users\\Alessandro\\Documents\\Sicurezza Informatica\\Configs\\byob_config.txt");
 
     private String path;
 

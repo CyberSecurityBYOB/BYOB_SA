@@ -47,27 +47,19 @@ public class ConfigurationController {
 
         List<String> lines = new ArrayList<String>();
         try {
-            //for (Object fieldValue : configurationFile) {
-            //    lines.add("print('foobar');");
-            //}
-
             for (Field field : ConfigurationFile.class.getDeclaredFields()) {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), ConfigurationFile.class);
                 Method getter = pd.getReadMethod();
                 Object obj = getter.invoke(this.configurationFile);
                 if (StringUtils.isPrintableString(obj)){
-                        System.out.println(StringUtils.capitalize(field.getName()));
-                        System.out.println(obj);
+                    System.out.println(StringUtils.capitalize(field.getName()));
+                    System.out.println(obj);
+                    lines.add(field.getName());
+                    lines.add((String) obj);
                 }
-                //lines.add(field.getName());
-                //lines.add(f);
             }
-            //Files.write(Paths.get(path), lines);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (IntrospectionException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+            Files.write(Paths.get(path), lines);
+        } catch (IllegalAccessException | InvocationTargetException | IntrospectionException | IOException e) {
             e.printStackTrace();
         }
     }
