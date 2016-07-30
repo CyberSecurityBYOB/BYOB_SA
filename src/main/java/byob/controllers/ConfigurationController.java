@@ -1,9 +1,8 @@
 package byob.controllers;
 
+import byob.Utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.FilePaths;
-import lombok.Data;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
@@ -54,10 +53,10 @@ public class ConfigurationController {
             for (Field field : ConfigurationFile.class.getDeclaredFields()) {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), ConfigurationFile.class);
                 Method getter = pd.getReadMethod();
-                Object f = getter.invoke(this.configurationFile);
-                if (f instanceof String) {
-                    System.out.println(field.getName());
-                    System.out.println(f);
+                Object obj = getter.invoke(this.configurationFile);
+                if (obj instanceof String) {
+                    System.out.println(StringUtils.capitalize(field.getName()));
+                    System.out.println(obj);
                 }
                 //lines.add(field.getName());
                 //lines.add(f);
