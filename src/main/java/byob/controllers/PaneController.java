@@ -5,18 +5,18 @@ import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import javax.security.auth.login.Configuration;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PaneController implements Initializable {
@@ -60,8 +60,16 @@ public class PaneController implements Initializable {
     //UserAgent
     @FXML private TextField textUserAgent;
 
+    //List of URLs
+    @FXML private ListView<TextField> urls;
+    private ObservableList<TextField> items;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        items = FXCollections.observableArrayList ();
+        items.add(new TextField());
+        urls.setItems(items);
 
         sliderChangeFrequency.valueProperty().addListener( new ChangeListener<Number>() {
             @Override
@@ -170,6 +178,11 @@ public class PaneController implements Initializable {
         }
     }
 
+    @FXML
+    private void addItem(ActionEvent event){
+        items.add(new TextField());
+    }
+
     private boolean checkToggleFullDay(){
         return this.toggleFullDay.isSelected();
     }
@@ -186,6 +199,7 @@ public class PaneController implements Initializable {
         configurationFile.setUserAgent(StringUtils.fromTextFieldToOptionalString(textUserAgent));
         configurationFile.setContacts(StringUtils.fromTextToOptionalString(textContacts));
         configurationFile.setSleepModeDate(StringUtils.fromDatePickerToOptionalString(sleepModeDatePicker));
+        configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(items));
 
         //configurationFile.setProxy(textProxy.getText());
         //configurationFile.setUserAgent(textUserAgent.getText());

@@ -57,6 +57,22 @@ public class ConfigurationController {
                     lines.add(field.getName());
                     lines.add((String) obj);
                 }
+                else {
+                    if (obj != null) {
+                        ArrayList<Object> strings = (ArrayList<Object>) obj;
+                        if (StringUtils.isPrintableArrayList(strings)) {
+                            System.out.println(StringUtils.capitalize(field.getName()));
+                            lines.add(field.getName());
+
+                            for (Object string : strings) {
+                                if (StringUtils.isPrintableString(string)) {
+                                    System.out.println(string);
+                                    lines.add((String) string);
+                                }
+                            }
+                        }
+                    }
+                }
             }
             Files.write(Paths.get(path), lines);
         } catch (IllegalAccessException | InvocationTargetException | IntrospectionException | IOException e) {

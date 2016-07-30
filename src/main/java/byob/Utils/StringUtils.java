@@ -1,10 +1,12 @@
 package byob.Utils;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -32,5 +34,17 @@ public class StringUtils {
         return obj != null &&
                obj instanceof String &&
                ((String) obj).length() > 0;
+    }
+
+    public static ArrayList<String> fromTextFieldsToStrings(ObservableList<TextField> textFields){
+        ArrayList<String> strings = new ArrayList<>();
+        for (TextField textField : textFields){
+            strings.add(textField.getText());
+        }
+        return strings;
+    }
+
+    public static boolean isPrintableArrayList(ArrayList<Object> objects){
+        return objects.size() > 0 && ((String)objects.get(0)).length() > 0;
     }
 }

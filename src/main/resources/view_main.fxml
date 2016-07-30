@@ -162,14 +162,30 @@
                                     <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <ListView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                    <ListView fx:id="urls" prefHeight="64.0" prefWidth="303.0" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </ListView>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="265.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="48.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#addItem" text="Add" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </Button>
+                                       </children>
+                                    </GridPane>
                                     <Label text="URL">
                                        <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                                        </padding>
                                     </Label>
                                  </children>
