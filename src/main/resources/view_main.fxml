@@ -111,7 +111,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Text fx:id="textMinChangeFrequency" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="1">
+                                          <Text fx:id="textMinChangeFrequency" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
@@ -132,7 +132,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Text fx:id="textMaxChangeFrequency" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="1">
+                                          <Text fx:id="textMaxChangeFrequency" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
@@ -146,7 +146,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                     </GridPane>
-                                    <Text fx:id="textChangeFrequency" strokeType="OUTSIDE" strokeWidth="0.0" text="1" visible="false" GridPane.columnIndex="1">
+                                    <Text fx:id="textChangeFrequency" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -230,7 +230,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Text fx:id="textMinHour" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="1">
+                                          <Text fx:id="textMinHour" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
@@ -244,7 +244,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Text fx:id="textMaxHour" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="1">
+                                          <Text fx:id="textMaxHour" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
@@ -302,7 +302,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Text fx:id="textContacts" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="1">
+                                          <Text fx:id="textContacts" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
