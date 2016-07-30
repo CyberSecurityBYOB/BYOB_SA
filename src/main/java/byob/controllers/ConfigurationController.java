@@ -56,6 +56,7 @@ public class ConfigurationController {
                 Method getter = pd.getReadMethod();
                 Object f = getter.invoke(this.configurationFile);
                 if (f instanceof String) {
+                    System.out.println(field.getName());
                     System.out.println(f);
                 }
                 //lines.add(field.getName());

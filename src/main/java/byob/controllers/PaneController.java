@@ -206,6 +206,7 @@ public class PaneController implements Initializable {
         return configurationFile;
     }
 
+    @FXML
     private void submitConfiguration(){
         ConfigurationFile configurationFile = packageConfiguration();
         ConfigurationController configurationController = ConfigurationController.getInstance(configurationFile);
