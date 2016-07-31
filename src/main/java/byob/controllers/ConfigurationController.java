@@ -23,18 +23,20 @@ public class ConfigurationController {
 
     private ConfigurationFile configurationFile;
     private static ConfigurationController instance;
+    private String filePath;
 
     private ConfigurationController (){
 
     }
 
-    private ConfigurationController (ConfigurationFile configurationFile){
+    private ConfigurationController (ConfigurationFile configurationFile, String filePath){
         this.configurationFile = configurationFile;
+        this.filePath = filePath;
     }
 
-    public static ConfigurationController getInstance(ConfigurationFile configurationFile){
+    public static ConfigurationController getInstance(ConfigurationFile configurationFile, String filePath){
         if (instance == null) {
-            return new ConfigurationController(configurationFile);
+            return new ConfigurationController(configurationFile, filePath);
         }
         else {
             instance.configurationFile = configurationFile;
@@ -43,7 +45,8 @@ public class ConfigurationController {
     }
 
     public void writeFile(){
-        String path = FilePaths.BYOB_SA.getPath();
+        //String path = FilePaths.BYOB_SA.getPath();
+        String path = this.filePath;
 
         List<String> lines = new ArrayList<String>();
         try {
@@ -54,14 +57,14 @@ public class ConfigurationController {
                 if (StringUtils.isPrintableString(obj)){
                     System.out.println(StringUtils.capitalize(field.getName()));
                     System.out.println(obj);
-                    lines.add(field.getName());
+                    lines.add(StringUtils.capitalize(field.getName()));
                     lines.add((String) obj);
                 }
                 else {
                     if (StringUtils.isPrintableGenericList(obj)) {
                         GenericList strings = (GenericList) obj;
                         System.out.println(StringUtils.capitalize(field.getName()));
-                        lines.add(field.getName());
+                        lines.add(StringUtils.capitalize(field.getName()));
 
                         for (Object string : strings) {
                             if (StringUtils.isPrintableString(string)) {

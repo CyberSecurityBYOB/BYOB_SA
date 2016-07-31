@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_byob_sa" default="compile.module.byob_sa">
+  <dirname property="module.byob_sa.basedir" file="${ant.file.module_byob_sa}"/>
+  
+  <property name="module.jdk.home.byob_sa" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.byob_sa" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.byob_sa" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.byob_sa" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="byob_sa.output.dir" value="${module.byob_sa.basedir}/target/classes"/>
+  <property name="byob_sa.testoutput.dir" value="${module.byob_sa.basedir}/target/test-classes"/>
+  
+  <path id="byob_sa.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="byob_sa.module.production.classpath">
+    <path refid="${module.jdk.classpath.byob_sa}"/>
+    <path refid="library.maven:_org.projectlombok:lombok:1.16.10.classpath"/>
+  </path>
+  
+  <path id="byob_sa.runtime.production.module.classpath">
+    <pathelement location="${byob_sa.output.dir}"/>
+  </path>
+  
+  <path id="byob_sa.module.classpath">
+    <path refid="${module.jdk.classpath.byob_sa}"/>
+    <pathelement location="${byob_sa.output.dir}"/>
+    <path refid="library.maven:_org.projectlombok:lombok:1.16.10.classpath"/>
+  </path>
+  
+  <path id="byob_sa.runtime.module.classpath">
+    <pathelement location="${byob_sa.testoutput.dir}"/>
+    <pathelement location="${byob_sa.output.dir}"/>
+    <path refid="library.maven:_org.projectlombok:lombok:1.16.10.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.byob_sa">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.byob_sa">
+    <patternset refid="excluded.from.module.byob_sa"/>
+  </patternset>
+  
+  <path id="byob_sa.module.sourcepath">
+    <dirset dir="${module.byob_sa.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="byob_sa.module.test.sourcepath">
+    <dirset dir="${module.byob_sa.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.byob_sa" depends="compile.module.byob_sa.production,compile.module.byob_sa.tests" description="Compile module BYOB_SA"/>
+  
+  <target name="compile.module.byob_sa.production" depends="register.custom.compilers" description="Compile module BYOB_SA; production classes">
+    <mkdir dir="${byob_sa.output.dir}"/>
+    <javac2 destdir="${byob_sa.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.byob_sa}/javac">
+      <compilerarg line="${compiler.args.byob_sa}"/>
+      <bootclasspath refid="byob_sa.module.bootclasspath"/>
+      <classpath refid="byob_sa.module.production.classpath"/>
+      <src refid="byob_sa.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.byob_sa"/>
+    </javac2>
+    
+    <copy todir="${byob_sa.output.dir}">
+      <fileset dir="${module.byob_sa.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.byob_sa.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.byob_sa.tests" depends="register.custom.compilers,compile.module.byob_sa.production" description="compile module BYOB_SA; test classes" unless="skip.tests">
+    <mkdir dir="${byob_sa.testoutput.dir}"/>
+    <javac2 destdir="${byob_sa.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.byob_sa}/javac">
+      <compilerarg line="${compiler.args.byob_sa}"/>
+      <bootclasspath refid="byob_sa.module.bootclasspath"/>
+      <classpath refid="byob_sa.module.classpath"/>
+      <src refid="byob_sa.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.byob_sa"/>
+    </javac2>
+    
+    <copy todir="${byob_sa.testoutput.dir}">
+      <fileset dir="${module.byob_sa.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.byob_sa" description="cleanup module">
+    <delete dir="${byob_sa.output.dir}"/>
+    <delete dir="${byob_sa.testoutput.dir}"/>
+  </target>
+</project>

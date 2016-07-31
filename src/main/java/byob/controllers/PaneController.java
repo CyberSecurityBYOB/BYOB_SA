@@ -13,7 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,6 +64,15 @@ public class PaneController implements Initializable {
     //List of URLs
     @FXML private ListView<TextField> urls;
     private ObservableList<TextField> items;
+
+    @FXML private Button submitButton;
+
+    private Stage stage;
+    private String filePath;
+
+    public void setStage(Stage stage){
+        this.stage = stage;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -240,8 +252,24 @@ public class PaneController implements Initializable {
             return;
         }
 
-        ConfigurationController configurationController = ConfigurationController.getInstance(configurationFile);
+        ConfigurationController configurationController = ConfigurationController.getInstance(configurationFile, this.filePath);
         configurationController.writeFile();
+    }
+
+    @FXML
+    private void showFileChooser(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save As");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(this.stage);
+        if (file != null){
+            this.submitButton.setDisable(false);
+            this.filePath = file.getAbsolutePath();
+        }
+        else {
+            this.submitButton.setDisable(true);
+        }
     }
 
     private void showErrorAlertDialog(){
