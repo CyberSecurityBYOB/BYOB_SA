@@ -1,12 +1,10 @@
-package byob.Utils;
+package byob.utils;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Optional;
 
 /**

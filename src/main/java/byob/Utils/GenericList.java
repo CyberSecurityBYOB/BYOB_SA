@@ -1,4 +1,4 @@
-package byob.Utils;
+package byob.utils;
 
 import java.util.ArrayList;
 

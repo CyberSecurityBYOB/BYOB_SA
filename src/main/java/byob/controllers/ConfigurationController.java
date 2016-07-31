@@ -1,7 +1,7 @@
 package byob.controllers;
 
-import byob.Utils.GenericList;
-import byob.Utils.StringUtils;
+import byob.utils.GenericList;
+import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.FilePaths;
 import java.beans.IntrospectionException;
@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by Alessandro on 29/07/2016.

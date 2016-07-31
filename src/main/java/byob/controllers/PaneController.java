@@ -1,7 +1,6 @@
 package byob.controllers;
 
-import byob.Utils.GenericList;
-import byob.Utils.StringUtils;
+import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;
 import javafx.beans.value.ChangeListener;
@@ -15,9 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-import javax.security.auth.login.Configuration;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PaneController implements Initializable {
@@ -235,8 +232,24 @@ public class PaneController implements Initializable {
     @FXML
     private void submitConfiguration(){
         ConfigurationFile configurationFile = packageConfiguration();
+
+        IntegrityCheckController integrityCheckController = IntegrityCheckController.getInstance(configurationFile);
+
+        if (!integrityCheckController.fullIntegrityCheck()){
+            showErrorAlertDialog();
+            return;
+        }
+
         ConfigurationController configurationController = ConfigurationController.getInstance(configurationFile);
         configurationController.writeFile();
+    }
+
+    private void showErrorAlertDialog(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText("Ooops, there was an error!");
+        alert.setContentText("Probably you have missed some fields or typed a wrong sleep mode date.");
+        alert.showAndWait();
     }
 
 }
