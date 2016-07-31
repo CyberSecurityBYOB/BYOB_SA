@@ -75,7 +75,7 @@ public class IntegrityCheckController {
         }
 
         for (Object object : genericList){
-            if (!StringUtils.isPrintableString(object)){
+            if (!StringUtils.isPrintableString(object) || !spaceIntegrityCheck(object)){
                 return false;
             }
         }
@@ -83,10 +83,20 @@ public class IntegrityCheckController {
         return true;
     }
 
+    private boolean spaceIntegrityCheck(Object object){
+        if (!StringUtils.isPrintableString(object)){
+            return true;
+        }
+        String string = (String) object;
+        return !string.contains(" ");
+    }
+
     public boolean fullIntegrityCheck() {
         return dateIntegrityCheck(configurationFile.getSleepModeDate()) &&
                minMaxIntegrityCheck(configurationFile.getMinFrequency(),configurationFile.getMaxFrequency()) &&
                minMaxIntegrityCheck(configurationFile.getSleepModeMinHour(),configurationFile.getSleepModeMaxHour()) &&
-               urlsIntegrityCheck(configurationFile.getUrls());
+               urlsIntegrityCheck(configurationFile.getUrls()) &&
+               spaceIntegrityCheck(configurationFile.getProxy()) &&
+               spaceIntegrityCheck(configurationFile.getUserAgent());
     }
 }
