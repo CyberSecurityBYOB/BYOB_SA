@@ -64,7 +64,7 @@ public class IntegrityCheckController {
 
         int min = Integer.valueOf(minString);
         int max = Integer.valueOf(maxString);
-        return min < max;
+        return min <= max;
     }
 
     public boolean urlsIntegrityCheck(GenericList genericList){

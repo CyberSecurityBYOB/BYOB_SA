@@ -16,7 +16,7 @@ public class ConfigurationFile {
     private String contacts;
     private String minFrequency;
     private String maxFrequency;
-    private String fixedFrequency;
+    //private String fixedFrequency;
     private String sleepModeDate;
     private String sleepModeMinHour;
     private String sleepModeMaxHour;

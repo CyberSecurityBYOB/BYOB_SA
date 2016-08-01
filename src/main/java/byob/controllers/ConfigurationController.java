@@ -51,27 +51,36 @@ public class ConfigurationController {
         List<String> lines = new ArrayList<String>();
         try {
             for (Field field : ConfigurationFile.class.getDeclaredFields()) {
+                String rowString = "";
+
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), ConfigurationFile.class);
                 Method getter = pd.getReadMethod();
                 Object obj = getter.invoke(this.configurationFile);
                 if (StringUtils.isPrintableString(obj)){
                     System.out.println(StringUtils.capitalize(field.getName()));
                     System.out.println(obj);
-                    lines.add(StringUtils.capitalize(field.getName()));
-                    lines.add((String) obj);
+                    //lines.add(StringUtils.capitalize(field.getName()));
+                    //lines.add((String) obj);
+                    String objInString = (String) obj;
+                    rowString = StringUtils.capitalize(field.getName());
+                    rowString = rowString + " " + objInString;
+                    lines.add(rowString);
                 }
                 else {
                     if (StringUtils.isPrintableGenericList(obj)) {
                         GenericList strings = (GenericList) obj;
                         System.out.println(StringUtils.capitalize(field.getName()));
-                        lines.add(StringUtils.capitalize(field.getName()));
-
+                        //lines.add(StringUtils.capitalize(field.getName()));
+                        rowString = StringUtils.capitalize(field.getName());
                         for (Object string : strings) {
                             if (StringUtils.isPrintableString(string)) {
                                 System.out.println(string);
-                                lines.add((String) string);
+                                //lines.add((String) string);
+                                String objInString = (String) string;
+                                rowString = rowString + " " + objInString;
                             }
                         }
+                        lines.add(rowString);
                     }
                 }
             }

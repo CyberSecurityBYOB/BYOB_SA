@@ -219,7 +219,9 @@ public class PaneController implements Initializable {
         //Check for Fixed Frequency
         if (checkToggleFixedFrequency()){
             //configurationFile.setFixedFrequency(textChangeFrequency.getText());
-            configurationFile.setFixedFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
+            //configurationFile.setFixedFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
+            configurationFile.setMinFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
+            configurationFile.setMaxFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
         }
         else {
             configurationFile.setMinFrequency(StringUtils.fromTextToOptionalString(textMinChangeFrequency));
