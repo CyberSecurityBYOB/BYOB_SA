@@ -1,5 +1,6 @@
 package byob.controllers;
 
+import byob.GraphicUrlElement;
 import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;
@@ -18,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PaneController implements Initializable {
@@ -62,13 +65,19 @@ public class PaneController implements Initializable {
     @FXML private TextField textUserAgent;
 
     //List of URLs
-    @FXML private ListView<TextField> urls;
-    private ObservableList<TextField> items;
+    //@FXML private ListView<TextField> urls;
+    //private ObservableList<TextField> items;
+    @FXML private ListView<GridPane> urls;
+    private ObservableList<GridPane> items;
 
     @FXML private Button submitButton;
 
     private Stage stage;
     private String filePath;
+
+    private ToggleGroup toggleGroupUrl;
+
+    private ArrayList<GraphicUrlElement> urlElements;
 
     public void setStage(Stage stage){
         this.stage = stage;
@@ -77,9 +86,15 @@ public class PaneController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        urlElements = new ArrayList<>();
+
+        toggleGroupUrl = new ToggleGroup();
         items = FXCollections.observableArrayList ();
-        items.add(new TextField());
+        //items.add(new TextField());
+        items.add(getUrlGridPane(true));
         urls.setItems(items);
+
+        urlElements.add(new GraphicUrlElement());
 
         sliderChangeFrequency.valueProperty().addListener( new ChangeListener<Number>() {
             @Override
@@ -120,6 +135,35 @@ public class PaneController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 textContacts.setText(String.format("%.0f", newValue));
+            }
+        });
+
+        toggleGroupUrl.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+            public void changed(ObservableValue<? extends Toggle> ov,
+                                Toggle old_toggle, Toggle new_toggle) {
+                //RadioButton radioButton = (RadioButton) toggleGroupUrl.getSelectedToggle();
+                RadioButton oldRadioButton = (RadioButton) old_toggle;
+                RadioButton radioButton = (RadioButton) new_toggle;
+                if (radioButton != null) {
+                    GridPane parentGridPane = (GridPane)radioButton.getParent();
+                    int index = items.indexOf(parentGridPane);
+                    //System.out.println(index);
+                    GraphicUrlElement graphicUrlElement = urlElements.get(index);
+                    System.out.println(graphicUrlElement.getContacts().getText());
+                    //store all the graphical components to the old graphic component
+                    int oldIndex = getOldGraphicIndex(old_toggle);
+                    //System.out.println(oldIndex);
+                    urlElements.set(oldIndex,getElementFromGraphicComponents());
+                    //System.out.println(urlElements.get(oldIndex).getContacts().getText());
+                    //set all attributes to graphical components
+                    setAllGraphicalAttributes(graphicUrlElement);
+                    //System.out.println("Graphic");
+                    //System.out.println(textContacts.getText());
+
+                    //Reset every slider in the window
+                    sliderMaxChangeFrequency.setValue(sliderMaxChangeFrequency.getMin());
+                    textMaxChangeFrequency.setText("");
+                }
             }
         });
     }
@@ -190,7 +234,9 @@ public class PaneController implements Initializable {
 
     @FXML
     private void addItem(ActionEvent event){
-        items.add(new TextField());
+        //items.add(new TextField());
+        items.add(getUrlGridPane(false));
+        urlElements.add(new GraphicUrlElement());
     }
 
     private boolean checkToggleFullDay(){
@@ -201,6 +247,66 @@ public class PaneController implements Initializable {
         return this.toggleFixedFrequency.isSelected();
     }
 
+    private GridPane getUrlGridPane(boolean enabled){
+        GridPane gridPane = new GridPane();
+        RadioButton radioButton = new RadioButton();
+        radioButton.setToggleGroup(this.toggleGroupUrl);
+        gridPane.add(radioButton,0,0);
+        gridPane.add(new TextField(),1,0);
+        radioButton.setSelected(enabled);
+        return gridPane;
+    }
+
+    private GraphicUrlElement getElementFromGraphicComponents() {
+        GraphicUrlElement graphicUrlElement = new GraphicUrlElement();
+        setAllElementAttributes(graphicUrlElement);
+        return graphicUrlElement;
+    }
+
+    private void setAllElementAttributes(GraphicUrlElement graphicUrlElement) {
+        graphicUrlElement.getContacts().setText(textContacts.getText());
+        graphicUrlElement.getFixedFrequency().setText(textChangeFrequency.getText());
+        graphicUrlElement.getMaxFrequency().setText(textMaxChangeFrequency.getText());
+        graphicUrlElement.getMinFrequency().setText(textMinChangeFrequency.getText());
+        graphicUrlElement.getProxy().setText(textProxy.getText());
+        graphicUrlElement.getSleepModeDate().setValue(sleepModeDatePicker.getValue());
+        graphicUrlElement.getUserAgent().setText(textUserAgent.getText());
+        graphicUrlElement.getSleepModeMaxHour().setText(textMaxHour.getText());
+        graphicUrlElement.getSleepModeMinHour().setText(textMinHour.getText());
+        graphicUrlElement.setCheckToggleFixedFrequency(checkToggleFixedFrequency());
+        graphicUrlElement.setCheckToggleFullDay(checkToggleFullDay());
+    }
+
+    private void setAllGraphicalAttributes(GraphicUrlElement graphicUrlElement) {
+        textProxy.setText(graphicUrlElement.getProxy().getText());
+        textUserAgent.setText(graphicUrlElement.getUserAgent().getText());
+        textChangeFrequency.setText(graphicUrlElement.getFixedFrequency().getText());
+        textContacts.setText(graphicUrlElement.getContacts().getText());
+        textMaxChangeFrequency.setText(graphicUrlElement.getMaxFrequency().getText());
+        textMaxHour.setText(graphicUrlElement.getSleepModeMaxHour().getText());
+        textMinChangeFrequency.setText(graphicUrlElement.getMinFrequency().getText());
+        textMinHour.setText(graphicUrlElement.getSleepModeMinHour().getText());
+        sleepModeDatePicker.setValue(graphicUrlElement.getSleepModeDate().getValue());
+    }
+
+    private GraphicUrlElement getOldGraphicElement(Toggle old_toggle){
+        RadioButton oldRadioButton = (RadioButton) old_toggle;
+        GridPane oldParentGridPane = (GridPane)oldRadioButton.getParent();
+        int oldIndex = items.indexOf(oldParentGridPane);
+
+        if (oldIndex != -1) {
+            return urlElements.get(oldIndex);
+        }
+
+        return null;
+    }
+
+    private int getOldGraphicIndex(Toggle old_toggle){
+        RadioButton oldRadioButton = (RadioButton) old_toggle;
+        GridPane oldParentGridPane = (GridPane)oldRadioButton.getParent();
+        return items.indexOf(oldParentGridPane);
+    }
+
     private ConfigurationFile packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
         //Optional<TextField> optTextField = Optional.ofNullable(textProxy);
@@ -209,7 +315,8 @@ public class PaneController implements Initializable {
         configurationFile.setUserAgent(StringUtils.fromTextFieldToOptionalString(textUserAgent));
         configurationFile.setContacts(StringUtils.fromTextToOptionalString(textContacts));
         configurationFile.setSleepModeDate(StringUtils.fromDatePickerToOptionalString(sleepModeDatePicker));
-        configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(items));
+        //TODO do configuration
+        //configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(items));
 
         //configurationFile.setProxy(textProxy.getText());
         //configurationFile.setUserAgent(textUserAgent.getText());
