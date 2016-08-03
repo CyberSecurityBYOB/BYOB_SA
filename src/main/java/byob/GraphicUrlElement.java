@@ -22,8 +22,7 @@ public class GraphicUrlElement {
     private DatePicker sleepModeDate;
     private Text sleepModeMinHour;
     private Text sleepModeMaxHour;
-    private boolean checkToggleFixedFrequency;
-    private boolean checkToggleFullDay;
+
 
     public GraphicUrlElement(){
         urls = new GenericList(TextField.class);
@@ -36,7 +35,5 @@ public class GraphicUrlElement {
         sleepModeDate = new DatePicker();
         sleepModeMinHour = new Text("");
         sleepModeMaxHour = new Text("");
-        checkToggleFixedFrequency = false;
-        checkToggleFullDay = false;
     }
 }

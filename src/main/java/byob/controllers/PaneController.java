@@ -1,6 +1,7 @@
 package byob.controllers;
 
 import byob.GraphicUrlElement;
+import byob.ViewUrlElement;
 import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;
@@ -77,7 +78,8 @@ public class PaneController implements Initializable {
 
     private ToggleGroup toggleGroupUrl;
 
-    private ArrayList<GraphicUrlElement> urlElements;
+    //private ArrayList<GraphicUrlElement> urlElements;
+    private ArrayList<ViewUrlElement> urlElements;
 
     public void setStage(Stage stage){
         this.stage = stage;
@@ -94,7 +96,8 @@ public class PaneController implements Initializable {
         items.add(getUrlGridPane(true));
         urls.setItems(items);
 
-        urlElements.add(new GraphicUrlElement());
+        //urlElements.add(new GraphicUrlElement());
+        urlElements.add(new ViewUrlElement());
 
         sliderChangeFrequency.valueProperty().addListener( new ChangeListener<Number>() {
             @Override
@@ -148,21 +151,17 @@ public class PaneController implements Initializable {
                     GridPane parentGridPane = (GridPane)radioButton.getParent();
                     int index = items.indexOf(parentGridPane);
                     //System.out.println(index);
-                    GraphicUrlElement graphicUrlElement = urlElements.get(index);
-                    System.out.println(graphicUrlElement.getContacts().getText());
+                    ViewUrlElement viewUrlElement = urlElements.get(index);
+                    //System.out.println(viewUrlElement.getContacts().getText());
                     //store all the graphical components to the old graphic component
                     int oldIndex = getOldGraphicIndex(old_toggle);
                     //System.out.println(oldIndex);
                     urlElements.set(oldIndex,getElementFromGraphicComponents());
                     //System.out.println(urlElements.get(oldIndex).getContacts().getText());
                     //set all attributes to graphical components
-                    setAllGraphicalAttributes(graphicUrlElement);
+                    setAllGraphicalAttributes(viewUrlElement);
                     //System.out.println("Graphic");
                     //System.out.println(textContacts.getText());
-
-                    //Reset every slider in the window
-                    sliderMaxChangeFrequency.setValue(sliderMaxChangeFrequency.getMin());
-                    textMaxChangeFrequency.setText("");
                 }
             }
         });
@@ -236,7 +235,7 @@ public class PaneController implements Initializable {
     private void addItem(ActionEvent event){
         //items.add(new TextField());
         items.add(getUrlGridPane(false));
-        urlElements.add(new GraphicUrlElement());
+        urlElements.add(new ViewUrlElement());
     }
 
     private boolean checkToggleFullDay(){
@@ -257,13 +256,30 @@ public class PaneController implements Initializable {
         return gridPane;
     }
 
-    private GraphicUrlElement getElementFromGraphicComponents() {
-        GraphicUrlElement graphicUrlElement = new GraphicUrlElement();
-        setAllElementAttributes(graphicUrlElement);
-        return graphicUrlElement;
+    private ViewUrlElement getElementFromGraphicComponents() {
+        ViewUrlElement viewUrlElement = new ViewUrlElement();
+        setAllElementAttributes(viewUrlElement);
+        return viewUrlElement;
     }
 
-    private void setAllElementAttributes(GraphicUrlElement graphicUrlElement) {
+    private void resetAllSliders() {
+        sliderMaxChangeFrequency.setValue(sliderMaxChangeFrequency.getMin());
+        sliderChangeFrequency.setValue(sliderChangeFrequency.getMin());
+        sliderContacts.setValue(sliderContacts.getMin());
+        sliderMinChangeFrequency.setValue(sliderMinChangeFrequency.getMin());
+        sliderMaxHour.setValue(sliderMaxHour.getValue());
+        sliderMinHour.setValue(sliderMinHour.getValue());
+
+        textMaxChangeFrequency.setText("");
+        textContacts.setText("");
+        textChangeFrequency.setText("");
+        textMinChangeFrequency.setText("");
+        textMaxHour.setText("");
+        textMinHour.setText("");
+    }
+
+    private void setAllElementAttributes(ViewUrlElement graphicUrlElement) {
+        //GraphicUrlElement stuff
         graphicUrlElement.getContacts().setText(textContacts.getText());
         graphicUrlElement.getFixedFrequency().setText(textChangeFrequency.getText());
         graphicUrlElement.getMaxFrequency().setText(textMaxChangeFrequency.getText());
@@ -273,11 +289,41 @@ public class PaneController implements Initializable {
         graphicUrlElement.getUserAgent().setText(textUserAgent.getText());
         graphicUrlElement.getSleepModeMaxHour().setText(textMaxHour.getText());
         graphicUrlElement.getSleepModeMinHour().setText(textMinHour.getText());
+        //System.out.println(graphicUrlElement.getMinFrequency().getText());
+        //ViewUrlElement stuff
         graphicUrlElement.setCheckToggleFixedFrequency(checkToggleFixedFrequency());
         graphicUrlElement.setCheckToggleFullDay(checkToggleFullDay());
+        graphicUrlElement.getSliderChangeFrequency().setValue(sliderChangeFrequency.getValue());
+        graphicUrlElement.getSliderContacts().setValue(sliderContacts.getValue());
+        graphicUrlElement.getSliderMaxHour().setValue(sliderMaxHour.getValue());
+        //Double doubleValue = sliderMinChangeFrequency.valueProperty().getValue();
+        //Integer integerValue = doubleValue.intValue();
+        //graphicUrlElement.getSliderMinChangeFrequency().valueProperty().setValue(integerValue);
+        graphicUrlElement.getSliderMinChangeFrequency().setValue(sliderMinChangeFrequency.getValue());
+        graphicUrlElement.getSliderMaxChangeFrequency().setValue(sliderMaxChangeFrequency.getValue());
+        graphicUrlElement.getSliderMinHour().setValue(sliderMinHour.getValue());
+        //System.out.println("sliderMinChangeFrequency.getValue() in setAllElementAttributes");
+        //System.out.println(sliderMinChangeFrequency.getValue());
+        //System.out.println("graphicUrlElement.getSliderMinChangeFrequency().getValue() in setAllElementAttributes");
+        //System.out.println(graphicUrlElement.getSliderMinChangeFrequency().getValue());
     }
 
-    private void setAllGraphicalAttributes(GraphicUrlElement graphicUrlElement) {
+    private void setAllGraphicalAttributes(ViewUrlElement graphicUrlElement) {
+        //ViewUrlElement stuff
+        toggleFixedFrequency.setSelected(graphicUrlElement.isCheckToggleFixedFrequency());
+        handleToggleFixedFrequency(null);
+        toggleFullDay.setSelected(graphicUrlElement.isCheckToggleFullDay());
+        handleToggleFullDay(null);
+        sliderChangeFrequency.setValue(graphicUrlElement.getSliderChangeFrequency().getValue());
+        sliderContacts.setValue(graphicUrlElement.getSliderContacts().getValue());
+        sliderMaxChangeFrequency.setValue(graphicUrlElement.getSliderMaxChangeFrequency().getValue());
+        sliderMaxHour.setValue(graphicUrlElement.getSliderMaxHour().getValue());
+        sliderMinChangeFrequency.setValue(graphicUrlElement.getSliderMinChangeFrequency().getValue());
+        sliderMinHour.setValue(graphicUrlElement.getSliderMinHour().getValue());
+
+        //System.out.println(sliderMinChangeFrequency.getValue());
+
+        //GraphicUrlElement stuff
         textProxy.setText(graphicUrlElement.getProxy().getText());
         textUserAgent.setText(graphicUrlElement.getUserAgent().getText());
         textChangeFrequency.setText(graphicUrlElement.getFixedFrequency().getText());
@@ -287,6 +333,9 @@ public class PaneController implements Initializable {
         textMinChangeFrequency.setText(graphicUrlElement.getMinFrequency().getText());
         textMinHour.setText(graphicUrlElement.getSleepModeMinHour().getText());
         sleepModeDatePicker.setValue(graphicUrlElement.getSleepModeDate().getValue());
+
+        //System.out.println("textMinChangeFrequency.getText() in setAllGraphicalAttributes");
+        //System.out.println(textMinChangeFrequency.getText());
     }
 
     private GraphicUrlElement getOldGraphicElement(Toggle old_toggle){
