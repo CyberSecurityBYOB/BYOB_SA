@@ -9,6 +9,7 @@ import lombok.Data;
 
 @Data
 public class ConfigurationFile {
+    private String version;
     private GenericList urls;
     private GenericList proxys;
     private GenericList userAgents;
@@ -21,6 +22,7 @@ public class ConfigurationFile {
     private GenericList sleepModeMaxHours;
 
     public ConfigurationFile(){
+        this.version = "2";
         this.urls = new GenericList<>(String.class);
         this.proxys = new GenericList<>(String.class);
         this.userAgents = new GenericList<>(String.class);
