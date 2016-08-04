@@ -263,6 +263,11 @@ public class PaneController implements Initializable {
         return viewUrlElement;
     }
 
+    private void storeLastAttribute() {
+            int storeIndex = getOldGraphicIndex(toggleGroupUrl.getSelectedToggle());
+            urlElements.set(storeIndex,getElementFromGraphicComponents());
+    }
+
     private void resetAllSliders() {
         sliderMaxChangeFrequency.setValue(sliderMaxChangeFrequency.getMin());
         sliderChangeFrequency.setValue(sliderChangeFrequency.getMin());
@@ -360,7 +365,7 @@ public class PaneController implements Initializable {
     private ConfigurationFile packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
         //Optional<TextField> optTextField = Optional.ofNullable(textProxy);
-        ViewAdapter viewAdapter = new ViewAdapter(urlElements);
+        ViewAdapter viewAdapter = new ViewAdapter(urlElements,items);
         viewAdapter.convert();
 
         //configurationFile.setProxy(StringUtils.fromTextFieldToOptionalString(textProxy));
@@ -391,8 +396,8 @@ public class PaneController implements Initializable {
 
     @FXML
     private void submitConfiguration(){
+        storeLastAttribute();
         ConfigurationFile configurationFile = packageConfiguration();
-
         IntegrityCheckController integrityCheckController = IntegrityCheckController.getInstance(configurationFile);
 
         if (!integrityCheckController.fullIntegrityCheck()){

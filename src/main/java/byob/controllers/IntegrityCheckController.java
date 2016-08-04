@@ -60,6 +60,7 @@ public class IntegrityCheckController {
         for (Object object : genericList) {
             String string = (String) object;
             if (!dateIntegrityCheck(string)) {
+                System.out.println("Date Error");
                 return false;
             }
         }
@@ -72,8 +73,10 @@ public class IntegrityCheckController {
         }
         if ( (!StringUtils.isPrintableString(minString) && StringUtils.isPrintableString(maxString)) ||
              (StringUtils.isPrintableString(minString) && !StringUtils.isPrintableString(maxString))){
+            System.out.println("Min Max Error");
             return false;
         }
+
 
         int min = Integer.valueOf(minString);
         int max = Integer.valueOf(maxString);
@@ -86,6 +89,7 @@ public class IntegrityCheckController {
             String stringMin = (String) genericListMin.get(i);
             String stringMax = (String) genericListMax.get(i);
             if (!minMaxIntegrityCheck(stringMin,stringMax)) {
+                System.out.println("Min Max Error");
                 return false;
             }
         }
@@ -96,11 +100,13 @@ public class IntegrityCheckController {
 
         if (genericList == null ||
             genericList.size() < 2){
+            System.out.println("Url Error, too small Generic List");
             return false;
         }
 
         for (Object object : genericList){
             if (!StringUtils.isPrintableString(object) || !spaceIntegrityCheck(object)){
+                System.out.println("Url Error");
                 return false;
             }
         }
@@ -119,6 +125,7 @@ public class IntegrityCheckController {
     private boolean spaceIntegrityChecks(GenericList genericList) {
         for (Object object : genericList) {
             if (!spaceIntegrityCheck(object)){
+                System.out.println("Space Error");
                 return false;
             }
         }

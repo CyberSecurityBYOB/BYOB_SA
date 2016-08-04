@@ -55,7 +55,7 @@ public class ConfigurationController {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), ConfigurationFile.class);
                 Method getter = pd.getReadMethod();
                 Object obj = getter.invoke(this.configurationFile);
-                if (StringUtils.isPrintableString(obj)){
+                if (StringUtils.isWritableString(obj)){
                     System.out.println(StringUtils.capitalize(field.getName()));
                     System.out.println(obj);
                     //lines.add(StringUtils.capitalize(field.getName()));
@@ -72,7 +72,7 @@ public class ConfigurationController {
                         //lines.add(StringUtils.capitalize(field.getName()));
                         rowString = StringUtils.capitalize(field.getName());
                         for (Object string : strings) {
-                            if (StringUtils.isPrintableString(string)) {
+                            if (StringUtils.isWritableString(string)) {
                                 System.out.println(string);
                                 //lines.add((String) string);
                                 String objInString = (String) string;
