@@ -1,6 +1,7 @@
 package byob.controllers;
 
 import byob.GraphicUrlElement;
+import byob.ViewAdapter;
 import byob.ViewUrlElement;
 import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
@@ -359,42 +360,31 @@ public class PaneController implements Initializable {
     private ConfigurationFile packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
         //Optional<TextField> optTextField = Optional.ofNullable(textProxy);
+        ViewAdapter viewAdapter = new ViewAdapter(urlElements);
+        viewAdapter.convert();
 
-        configurationFile.setProxy(StringUtils.fromTextFieldToOptionalString(textProxy));
-        configurationFile.setUserAgent(StringUtils.fromTextFieldToOptionalString(textUserAgent));
-        configurationFile.setContacts(StringUtils.fromTextToOptionalString(textContacts));
-        configurationFile.setSleepModeDate(StringUtils.fromDatePickerToOptionalString(sleepModeDatePicker));
-        //TODO do configuration
-        //configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(items));
+        //configurationFile.setProxy(StringUtils.fromTextFieldToOptionalString(textProxy));
+        configurationFile.setProxys(StringUtils.fromTextFieldsToStrings(viewAdapter.getProxys()));
+        //configurationFile.setUserAgent(StringUtils.fromTextFieldToOptionalString(textUserAgent));
+        configurationFile.setUserAgents(StringUtils.fromTextFieldsToStrings(viewAdapter.getUserAgents()));
+        //configurationFile.setContacts(StringUtils.fromTextToOptionalString(textContacts));
+        configurationFile.setContacts(StringUtils.fromTextToStrings(viewAdapter.getContacts()));
+        //configurationFile.setSleepModeDate(StringUtils.fromDatePickerToOptionalString(sleepModeDatePicker));
+        configurationFile.setSleepModeDates(StringUtils.fromDatePickersToStrings(viewAdapter.getSleepModeDates()));
+        //configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(ur));
+        configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(viewAdapter.getUrls()));
+
+        //Transferred to the ViewAdapter
+        configurationFile.setSleepModeMinHours(StringUtils.fromTextToStrings(viewAdapter.getSleepModeMinHours()));
+        configurationFile.setSleepModeMaxHours(StringUtils.fromTextToStrings(viewAdapter.getSleepModeMaxHours()));
+
+        configurationFile.setMinFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMinFrequencys()));
+        configurationFile.setMaxFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMaxFrequencys()));
 
         //configurationFile.setProxy(textProxy.getText());
         //configurationFile.setUserAgent(textUserAgent.getText());
         //configurationFile.setContacts(textContacts.getText());
         //configurationFile.setSleepModeDate(sleepModeDatePicker.getValue().toString());
-
-        //Check for Fixed Frequency
-        if (checkToggleFixedFrequency()){
-            //configurationFile.setFixedFrequency(textChangeFrequency.getText());
-            //configurationFile.setFixedFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
-            configurationFile.setMinFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
-            configurationFile.setMaxFrequency(StringUtils.fromTextToOptionalString(textChangeFrequency));
-        }
-        else {
-            configurationFile.setMinFrequency(StringUtils.fromTextToOptionalString(textMinChangeFrequency));
-            configurationFile.setMaxFrequency(StringUtils.fromTextToOptionalString(textMaxChangeFrequency));
-            //configurationFile.setMinFrequency(textMinChangeFrequency.getText());
-            //configurationFile.setMaxFrequency(textMaxChangeFrequency.getText());
-        }
-
-        //Check for Full Day
-        if (checkToggleFullDay()){
-            configurationFile.setSleepModeMinHour(DayHours.MIDNIGHT_AM.getName());
-            configurationFile.setSleepModeMaxHour(DayHours.ELEVEN_PM.getName());
-        }
-        else {
-            configurationFile.setSleepModeMinHour(StringUtils.fromTextToOptionalString(textMinHour));
-            configurationFile.setSleepModeMaxHour(StringUtils.fromTextToOptionalString(textMaxHour));
-        }
 
         return configurationFile;
     }

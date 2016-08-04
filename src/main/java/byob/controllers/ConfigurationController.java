@@ -3,7 +3,6 @@ package byob.controllers;
 import byob.utils.GenericList;
 import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
-import byob.enums.FilePaths;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;

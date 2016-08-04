@@ -34,10 +34,26 @@ public class StringUtils {
                ((String) obj).length() > 0;
     }
 
-    public static GenericList fromTextFieldsToStrings(ObservableList<TextField> textFields){
+    public static GenericList fromTextFieldsToStrings(GenericList<TextField> textFields){
         GenericList strings = new GenericList(String.class);
         for (TextField textField : textFields){
             strings.add(textField.getText());
+        }
+        return strings;
+    }
+
+    public static GenericList fromTextToStrings(GenericList<Text> texts){
+        GenericList strings = new GenericList(String.class);
+        for (Text text : texts){
+            strings.add(text.getText());
+        }
+        return strings;
+    }
+
+    public static GenericList fromDatePickersToStrings(GenericList<DatePicker> datePickers){
+        GenericList strings = new GenericList(String.class);
+        for (DatePicker datePicker : datePickers){
+            strings.add(fromDatePickerToOptionalString(datePicker));
         }
         return strings;
     }

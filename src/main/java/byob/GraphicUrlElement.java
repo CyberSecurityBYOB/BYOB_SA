@@ -22,6 +22,8 @@ public class GraphicUrlElement {
     private DatePicker sleepModeDate;
     private Text sleepModeMinHour;
     private Text sleepModeMaxHour;
+    private boolean checkToggleFixedFrequency;
+    private boolean checkToggleFullDay;
 
 
     public GraphicUrlElement(){
