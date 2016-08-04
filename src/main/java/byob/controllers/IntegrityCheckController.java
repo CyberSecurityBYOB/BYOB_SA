@@ -5,10 +5,13 @@ import byob.utils.GenericList;
 import byob.utils.StringUtils;
 
 import javax.swing.text.DateFormatter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Created by Alessandro on 31/07/2016.
@@ -53,6 +56,16 @@ public class IntegrityCheckController {
         }
     }
 
+    public boolean dateIntegrityChecks(GenericList genericList) {
+        for (Object object : genericList) {
+            String string = (String) object;
+            if (!dateIntegrityCheck(string)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean minMaxIntegrityCheck(String minString, String maxString){
         if (!(StringUtils.isPrintableString(minString) && StringUtils.isPrintableString(maxString))) {
             return true;
@@ -65,6 +78,18 @@ public class IntegrityCheckController {
         int min = Integer.valueOf(minString);
         int max = Integer.valueOf(maxString);
         return min <= max;
+    }
+
+    public boolean minMaxIntegrityChecks(GenericList genericListMin, GenericList genericListMax) {
+
+        for (int i = 0; i<genericListMin.size(); i++){
+            String stringMin = (String) genericListMin.get(i);
+            String stringMax = (String) genericListMax.get(i);
+            if (!minMaxIntegrityCheck(stringMin,stringMax)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean urlsIntegrityCheck(GenericList genericList){
@@ -91,12 +116,22 @@ public class IntegrityCheckController {
         return !string.contains(" ");
     }
 
+    private boolean spaceIntegrityChecks(GenericList genericList) {
+        for (Object object : genericList) {
+            if (!spaceIntegrityCheck(object)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean fullIntegrityCheck() {
-        return dateIntegrityCheck(configurationFile.getSleepModeDate()) &&
-               minMaxIntegrityCheck(configurationFile.getMinFrequency(),configurationFile.getMaxFrequency()) &&
-               minMaxIntegrityCheck(configurationFile.getSleepModeMinHour(),configurationFile.getSleepModeMaxHour()) &&
+        return dateIntegrityChecks(configurationFile.getSleepModeDates()) &&
+               minMaxIntegrityChecks(configurationFile.getMinFrequencys(),configurationFile.getMaxFrequencys()) &&
+               minMaxIntegrityChecks(configurationFile.getSleepModeMinHours(),configurationFile.getSleepModeMaxHours()) &&
                urlsIntegrityCheck(configurationFile.getUrls()) &&
-               spaceIntegrityCheck(configurationFile.getProxy()) &&
-               spaceIntegrityCheck(configurationFile.getUserAgent());
+               spaceIntegrityChecks(configurationFile.getProxys()) &&
+               spaceIntegrityChecks(configurationFile.getUserAgents());
+
     }
 }
