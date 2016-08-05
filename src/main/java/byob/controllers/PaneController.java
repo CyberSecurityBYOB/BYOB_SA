@@ -322,7 +322,7 @@ public class PaneController implements Initializable {
         //ViewUrlElement stuff
         graphicUrlElement.setCheckToggleFixedFrequency(checkToggleFixedFrequency());
         graphicUrlElement.setCheckToggleFullDay(checkToggleFullDay());
-        graphicUrlElement.setCheckDisableComboBox(!checkDisableComboBox());
+        graphicUrlElement.setCheckDisableComboBox(checkDisableComboBox());
         graphicUrlElement.getSliderChangeFrequency().setValue(sliderChangeFrequency.getValue());
         graphicUrlElement.getSliderContacts().setValue(sliderContacts.getValue());
         graphicUrlElement.getSliderMaxHour().setValue(sliderMaxHour.getValue());
@@ -346,7 +346,6 @@ public class PaneController implements Initializable {
         handleToggleFixedFrequency(null);
         toggleFullDay.setSelected(graphicUrlElement.isCheckToggleFullDay());
         handleToggleFullDay(null);
-        comboBoxRepeat.setDisable(graphicUrlElement.isCheckDisableComboBox());
         sliderChangeFrequency.setValue(graphicUrlElement.getSliderChangeFrequency().getValue());
         sliderContacts.setValue(graphicUrlElement.getSliderContacts().getValue());
         sliderMaxChangeFrequency.setValue(graphicUrlElement.getSliderMaxChangeFrequency().getValue());
@@ -366,10 +365,12 @@ public class PaneController implements Initializable {
         textMinChangeFrequency.setText(graphicUrlElement.getMinFrequency().getText());
         textMinHour.setText(graphicUrlElement.getSleepModeMinHour().getText());
         sleepModeDatePicker.setValue(graphicUrlElement.getSleepModeDate().getValue());
-
         comboBoxRepeat.setValue(graphicUrlElement.getComboBoxRepeat().getValue());
         //System.out.println("textMinChangeFrequency.getText() in setAllGraphicalAttributes");
         //System.out.println(textMinChangeFrequency.getText());
+
+        //ViewElement Combo stuff
+        comboBoxRepeat.setDisable(graphicUrlElement.isCheckDisableComboBox());
     }
 
     private GraphicUrlElement getOldGraphicElement(Toggle old_toggle){
