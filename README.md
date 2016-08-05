@@ -35,4 +35,5 @@ Operativo e al/i browser presenti sulla postazione su cui il software è install
 11. [NostraEstensione] Gestire l'introduzione di url malformati
 12. [NostraEstensione] Rendere la BotNet eseguibile in ambienti senza interprete Python
 13. [NostraEstensione] Gestire la configurazione di default dei campi non immessi di ogni botnet
-14. 14. [NostraEstensione] Controllo di versione del file di configurazione. Stand Alone Gui e Botnet devono essere compatibili
+14. [NostraEstensione] Controllo di versione del file di configurazione. Stand Alone Gui e Botnet devono essere compatibili
+15. [NostraEstensione] Ricezione data e ora da server NTP
