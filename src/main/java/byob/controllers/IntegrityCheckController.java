@@ -9,6 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -44,16 +46,15 @@ public class IntegrityCheckController {
             return true;
         }
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            Date date = formatter.parse(dateInString);
-            Date dateNow = new Date();
-            return date.compareTo(dateNow)>=0;
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate oldDate = LocalDate.parse(dateInString,formatter);
+        if (oldDate == null) {
             return false;
         }
+        LocalDate newDate = LocalDate.now();
+        int oldDay = oldDate.getDayOfYear();
+        int newDay = newDate.getDayOfYear();
+        return oldDay>=newDay;
     }
 
     public boolean dateIntegrityChecks(GenericList genericList) {
@@ -134,6 +135,18 @@ public class IntegrityCheckController {
         return true;
     }
 
+    public boolean ntpsIntegrityCheck(GenericList genericList){
+
+        for (Object object : genericList){
+            if (!StringUtils.isWritableString(object) || !spaceIntegrityCheck(object)){
+                System.out.println("NTP Error");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private boolean spaceIntegrityCheck(Object object){
         if (!StringUtils.isPrintableString(object)){
             return true;
@@ -159,7 +172,8 @@ public class IntegrityCheckController {
                minMaxIntegrityChecks(configurationFile.getSleepModeMinHours(),configurationFile.getSleepModeMaxHours()) &&
                urlsIntegrityCheck(configurationFile.getUrls()) &&
                spaceIntegrityChecks(configurationFile.getProxys()) &&
-               spaceIntegrityChecks(configurationFile.getUserAgents());
+               spaceIntegrityChecks(configurationFile.getUserAgents()) &&
+               ntpsIntegrityCheck(configurationFile.getNetworkTimeServers());
 
     }
 }

@@ -179,12 +179,12 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="8.0" />
                                        </GridPane.margin>
                                     </ToggleButton>
-                                    <Slider fx:id="sliderMinHour" max="23.0" min="1.0" GridPane.rowIndex="3">
+                                    <Slider fx:id="sliderMinHour" max="23.0" GridPane.rowIndex="3">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
                                     </Slider>
-                                    <Slider fx:id="sliderMaxHour" max="23.0" min="1.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Slider fx:id="sliderMaxHour" max="23.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
