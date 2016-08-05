@@ -1,6 +1,7 @@
 package byob;
 
 import byob.utils.GenericList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -24,6 +25,7 @@ public class GraphicUrlElement {
     private Text sleepModeMaxHour;
     private boolean checkToggleFixedFrequency;
     private boolean checkToggleFullDay;
+    private ComboBox comboBoxRepeat;
 
 
     public GraphicUrlElement(){
@@ -37,5 +39,6 @@ public class GraphicUrlElement {
         sleepModeDate = new DatePicker();
         sleepModeMinHour = new Text("");
         sleepModeMaxHour = new Text("");
+        comboBoxRepeat = new ComboBox();
     }
 }

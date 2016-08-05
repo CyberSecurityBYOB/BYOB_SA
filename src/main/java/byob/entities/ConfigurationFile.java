@@ -1,5 +1,6 @@
 package byob.entities;
 
+import byob.enums.Versions;
 import byob.utils.GenericList;
 import lombok.Data;
 
@@ -20,9 +21,10 @@ public class ConfigurationFile {
     private GenericList sleepModeDates;
     private GenericList sleepModeMinHours;
     private GenericList sleepModeMaxHours;
+    private GenericList repeats;
 
     public ConfigurationFile(){
-        this.version = "2";
+        this.version = Versions.NewVersion.getName();
         this.urls = new GenericList<>(String.class);
         this.proxys = new GenericList<>(String.class);
         this.userAgents = new GenericList<>(String.class);
@@ -32,5 +34,6 @@ public class ConfigurationFile {
         this.sleepModeDates = new GenericList<>(String.class);
         this.sleepModeMinHours = new GenericList<>(String.class);
         this.sleepModeMaxHours = new GenericList<>(String.class);
+        this.repeats = new GenericList<>(String.class);
     }
 }

@@ -3,6 +3,7 @@ package byob;
 import byob.enums.DayHours;
 import byob.utils.GenericList;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -27,6 +28,7 @@ public class ViewAdapter {
     private GenericList<DatePicker> sleepModeDates;
     private GenericList<Text> sleepModeMinHours;
     private GenericList<Text> sleepModeMaxHours;
+    private GenericList<ComboBox> comboBoxRepeats;
     private ArrayList<ViewUrlElement> viewUrlElements;
 
     public ViewAdapter(ArrayList<ViewUrlElement> viewUrlElements, ObservableList<GridPane> gridPanes) {
@@ -40,6 +42,7 @@ public class ViewAdapter {
         sleepModeDates = new GenericList<>(DatePicker.class);
         sleepModeMinHours = new GenericList<>(Text.class);
         sleepModeMaxHours = new GenericList<>(Text.class);
+        comboBoxRepeats = new GenericList<>(ComboBox.class);
         fromGridPanesToTextFields(gridPanes);
     }
 
@@ -49,6 +52,7 @@ public class ViewAdapter {
             userAgents.add(viewUrlElement.getUserAgent());
             contacts.add(viewUrlElement.getContacts());
             sleepModeDates.add(viewUrlElement.getSleepModeDate());
+            comboBoxRepeats.add(viewUrlElement.getComboBoxRepeat());
 
             //Check for Fixed Frequency
             if (viewUrlElement.isCheckToggleFixedFrequency()){

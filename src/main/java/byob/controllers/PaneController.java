@@ -3,6 +3,7 @@ package byob.controllers;
 import byob.GraphicUrlElement;
 import byob.ViewAdapter;
 import byob.ViewUrlElement;
+import byob.enums.Repeats;
 import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
 import byob.enums.DayHours;
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PaneController implements Initializable {
+
+    private Double MAX_URL_WIDTH = 265.0;
 
     //Frequency
     @FXML private Text textChangeFrequency;
@@ -74,6 +77,8 @@ public class PaneController implements Initializable {
 
     @FXML private Button submitButton;
 
+    @FXML private ComboBox comboBoxRepeat;
+
     private Stage stage;
     private String filePath;
 
@@ -99,6 +104,15 @@ public class PaneController implements Initializable {
 
         //urlElements.add(new GraphicUrlElement());
         urlElements.add(new ViewUrlElement());
+
+        ObservableList<String> options =
+        FXCollections.observableArrayList(
+                Repeats.EveryDay.getName(),
+                Repeats.EveryWeek.getName(),
+                Repeats.EveryMonth.getName(),
+                Repeats.EveryYear.getName()
+        );
+        comboBoxRepeat.setItems(options);
 
         sliderChangeFrequency.valueProperty().addListener( new ChangeListener<Number>() {
             @Override
@@ -239,6 +253,11 @@ public class PaneController implements Initializable {
         urlElements.add(new ViewUrlElement());
     }
 
+    @FXML
+    private void showComboBox(ActionEvent event){
+        comboBoxRepeat.setDisable(false);
+    }
+
     private boolean checkToggleFullDay(){
         return this.toggleFullDay.isSelected();
     }
@@ -247,12 +266,16 @@ public class PaneController implements Initializable {
         return this.toggleFixedFrequency.isSelected();
     }
 
+    private boolean checkDisableComboBox() { return this.comboBoxRepeat.isDisable(); }
+
     private GridPane getUrlGridPane(boolean enabled){
         GridPane gridPane = new GridPane();
         RadioButton radioButton = new RadioButton();
         radioButton.setToggleGroup(this.toggleGroupUrl);
         gridPane.add(radioButton,0,0);
-        gridPane.add(new TextField(),1,0);
+        TextField textUrlField = new TextField();
+        textUrlField.setPrefWidth(MAX_URL_WIDTH);
+        gridPane.add(textUrlField,1,0);
         radioButton.setSelected(enabled);
         return gridPane;
     }
@@ -299,6 +322,7 @@ public class PaneController implements Initializable {
         //ViewUrlElement stuff
         graphicUrlElement.setCheckToggleFixedFrequency(checkToggleFixedFrequency());
         graphicUrlElement.setCheckToggleFullDay(checkToggleFullDay());
+        graphicUrlElement.setCheckDisableComboBox(!checkDisableComboBox());
         graphicUrlElement.getSliderChangeFrequency().setValue(sliderChangeFrequency.getValue());
         graphicUrlElement.getSliderContacts().setValue(sliderContacts.getValue());
         graphicUrlElement.getSliderMaxHour().setValue(sliderMaxHour.getValue());
@@ -308,6 +332,8 @@ public class PaneController implements Initializable {
         graphicUrlElement.getSliderMinChangeFrequency().setValue(sliderMinChangeFrequency.getValue());
         graphicUrlElement.getSliderMaxChangeFrequency().setValue(sliderMaxChangeFrequency.getValue());
         graphicUrlElement.getSliderMinHour().setValue(sliderMinHour.getValue());
+
+        graphicUrlElement.getComboBoxRepeat().setValue(comboBoxRepeat.getValue());
         //System.out.println("sliderMinChangeFrequency.getValue() in setAllElementAttributes");
         //System.out.println(sliderMinChangeFrequency.getValue());
         //System.out.println("graphicUrlElement.getSliderMinChangeFrequency().getValue() in setAllElementAttributes");
@@ -320,6 +346,7 @@ public class PaneController implements Initializable {
         handleToggleFixedFrequency(null);
         toggleFullDay.setSelected(graphicUrlElement.isCheckToggleFullDay());
         handleToggleFullDay(null);
+        comboBoxRepeat.setDisable(graphicUrlElement.isCheckDisableComboBox());
         sliderChangeFrequency.setValue(graphicUrlElement.getSliderChangeFrequency().getValue());
         sliderContacts.setValue(graphicUrlElement.getSliderContacts().getValue());
         sliderMaxChangeFrequency.setValue(graphicUrlElement.getSliderMaxChangeFrequency().getValue());
@@ -340,6 +367,7 @@ public class PaneController implements Initializable {
         textMinHour.setText(graphicUrlElement.getSleepModeMinHour().getText());
         sleepModeDatePicker.setValue(graphicUrlElement.getSleepModeDate().getValue());
 
+        comboBoxRepeat.setValue(graphicUrlElement.getComboBoxRepeat().getValue());
         //System.out.println("textMinChangeFrequency.getText() in setAllGraphicalAttributes");
         //System.out.println(textMinChangeFrequency.getText());
     }
@@ -386,6 +414,7 @@ public class PaneController implements Initializable {
         configurationFile.setMinFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMinFrequencys()));
         configurationFile.setMaxFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMaxFrequencys()));
 
+        configurationFile.setRepeats(StringUtils.fromComboBoxesToStrings(viewAdapter.getComboBoxRepeats()));
         //configurationFile.setProxy(textProxy.getText());
         //configurationFile.setUserAgent(textUserAgent.getText());
         //configurationFile.setContacts(textContacts.getText());

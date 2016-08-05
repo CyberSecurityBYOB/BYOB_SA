@@ -67,6 +67,26 @@ public class IntegrityCheckController {
         return true;
     }
 
+    public boolean comboIntegrityCheck(String comboInString){
+        return StringUtils.isWritableString(comboInString);
+    }
+
+    public boolean comboIntegrityChecks(GenericList genericComboList, GenericList genericDateList) {
+        for (int i=0; i<genericComboList.size(); i++){
+            String stringCombo = (String) genericComboList.get(i);
+            String stringDate = (String) genericDateList.get(i);
+            if (!comboIntegrityCheck(stringCombo)) {
+                System.out.println("Combo Error");
+                return false;
+            }
+            if (!stringCombo.equals(StringUtils.UNKNOWN) && !StringUtils.isPrintableString(stringDate)) {
+                System.out.println("Date Combo Error");
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean minMaxIntegrityCheck(String minString, String maxString){
         if (!(StringUtils.isPrintableString(minString) && StringUtils.isPrintableString(maxString))) {
             return true;
@@ -133,7 +153,8 @@ public class IntegrityCheckController {
     }
 
     public boolean fullIntegrityCheck() {
-        return dateIntegrityChecks(configurationFile.getSleepModeDates()) &&
+        return comboIntegrityChecks(configurationFile.getRepeats(), configurationFile.getSleepModeDates()) &&
+               dateIntegrityChecks(configurationFile.getSleepModeDates()) &&
                minMaxIntegrityChecks(configurationFile.getMinFrequencys(),configurationFile.getMaxFrequencys()) &&
                minMaxIntegrityChecks(configurationFile.getSleepModeMinHours(),configurationFile.getSleepModeMaxHours()) &&
                urlsIntegrityCheck(configurationFile.getUrls()) &&

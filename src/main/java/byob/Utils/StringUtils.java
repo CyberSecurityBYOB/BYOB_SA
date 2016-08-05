@@ -1,9 +1,11 @@
 package byob.utils;
 
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,6 +25,20 @@ public class StringUtils {
 
     public static String fromDatePickerToOptionalString(DatePicker datePicker) {
         return Optional.ofNullable(datePicker).map(DatePicker::getValue).map(Object::toString).orElse(UNKNOWN);
+    }
+
+    public static String fromObjectToOptionalString(Object object) {
+        return Optional.ofNullable(object).map(Object::toString).orElse(UNKNOWN);
+    }
+
+    public static GenericList fromComboBoxesToStrings(GenericList genericList) {
+        GenericList genericStringList = new GenericList(String.class);
+
+        for (Object object : genericList) {
+            ComboBox comboBox = (ComboBox) object;
+            genericStringList.add(fromObjectToOptionalString(comboBox.getValue()));
+        }
+        return genericStringList;
     }
 
     public static String fromTextToOptionalString(Text text) {
