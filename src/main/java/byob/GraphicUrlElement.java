@@ -26,6 +26,7 @@ public class GraphicUrlElement {
     private boolean checkToggleFixedFrequency;
     private boolean checkToggleFullDay;
     private ComboBox comboBoxRepeat;
+    private TextField ntpServerUrl;
 
 
     public GraphicUrlElement(){
@@ -40,5 +41,6 @@ public class GraphicUrlElement {
         sleepModeMinHour = new Text("");
         sleepModeMaxHour = new Text("");
         comboBoxRepeat = new ComboBox();
+        ntpServerUrl = new TextField("");
     }
 }

@@ -10,6 +10,7 @@ import lombok.Data;
 public class ViewUrlElement extends GraphicUrlElement{
     private boolean checkToggleFixedFrequency;
     private boolean checkToggleFullDay;
+    private boolean checkToggleNTP;
     private boolean checkDisableComboBox;
     private Slider sliderMaxChangeFrequency;
     private Slider sliderChangeFrequency;
@@ -23,6 +24,7 @@ public class ViewUrlElement extends GraphicUrlElement{
         checkToggleFixedFrequency = false;
         checkToggleFullDay = false;
         checkDisableComboBox = true;
+        checkToggleNTP = false;
         sliderChangeFrequency = new Slider(1,3600,1);
         sliderContacts = new Slider(1,100,1);
         sliderMaxChangeFrequency = new Slider(1,3600,1);

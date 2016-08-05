@@ -29,6 +29,7 @@ public class ViewAdapter {
     private GenericList<Text> sleepModeMinHours;
     private GenericList<Text> sleepModeMaxHours;
     private GenericList<ComboBox> comboBoxRepeats;
+    private GenericList<TextField> ntps;
     private ArrayList<ViewUrlElement> viewUrlElements;
 
     public ViewAdapter(ArrayList<ViewUrlElement> viewUrlElements, ObservableList<GridPane> gridPanes) {
@@ -43,6 +44,7 @@ public class ViewAdapter {
         sleepModeMinHours = new GenericList<>(Text.class);
         sleepModeMaxHours = new GenericList<>(Text.class);
         comboBoxRepeats = new GenericList<>(ComboBox.class);
+        ntps = new GenericList<>(TextField.class);
         fromGridPanesToTextFields(gridPanes);
     }
 
@@ -53,6 +55,7 @@ public class ViewAdapter {
             contacts.add(viewUrlElement.getContacts());
             sleepModeDates.add(viewUrlElement.getSleepModeDate());
             comboBoxRepeats.add(viewUrlElement.getComboBoxRepeat());
+            ntps.add(viewUrlElement.getNtpServerUrl());
 
             //Check for Fixed Frequency
             if (viewUrlElement.isCheckToggleFixedFrequency()){

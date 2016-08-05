@@ -79,6 +79,9 @@ public class PaneController implements Initializable {
 
     @FXML private ComboBox comboBoxRepeat;
 
+    @FXML private TextField ntpServerUrl;
+    @FXML private ToggleButton toggleNTP;
+
     private Stage stage;
     private String filePath;
 
@@ -188,6 +191,18 @@ public class PaneController implements Initializable {
     }
 
     @FXML
+    private void handleToggleNTP(ActionEvent event) {
+        if (toggleNTP.isSelected()) {
+            ntpServerUrl.setVisible(true);
+            ntpServerUrl.setManaged(true);
+        }
+        else {
+            ntpServerUrl.setVisible(false);
+            ntpServerUrl.setManaged(false);
+        }
+    }
+
+    @FXML
     private void handleToggleFixedFrequency(ActionEvent event) {
 
         if (toggleFixedFrequency.isSelected()) {
@@ -273,6 +288,8 @@ public class PaneController implements Initializable {
 
     private boolean checkDisableComboBox() { return this.comboBoxRepeat.isDisable(); }
 
+    private boolean checkToggleNTP() {return this.toggleNTP.isSelected();}
+
     private GridPane getUrlGridPane(boolean enabled){
         GridPane gridPane = new GridPane();
         RadioButton radioButton = new RadioButton();
@@ -328,6 +345,7 @@ public class PaneController implements Initializable {
         graphicUrlElement.setCheckToggleFixedFrequency(checkToggleFixedFrequency());
         graphicUrlElement.setCheckToggleFullDay(checkToggleFullDay());
         graphicUrlElement.setCheckDisableComboBox(checkDisableComboBox());
+        graphicUrlElement.setCheckToggleNTP(checkToggleNTP());
         graphicUrlElement.getSliderChangeFrequency().setValue(sliderChangeFrequency.getValue());
         graphicUrlElement.getSliderContacts().setValue(sliderContacts.getValue());
         graphicUrlElement.getSliderMaxHour().setValue(sliderMaxHour.getValue());
@@ -339,6 +357,7 @@ public class PaneController implements Initializable {
         graphicUrlElement.getSliderMinHour().setValue(sliderMinHour.getValue());
 
         graphicUrlElement.getComboBoxRepeat().setValue(comboBoxRepeat.getValue());
+        graphicUrlElement.getNtpServerUrl().setText(ntpServerUrl.getText());
         //System.out.println("sliderMinChangeFrequency.getValue() in setAllElementAttributes");
         //System.out.println(sliderMinChangeFrequency.getValue());
         //System.out.println("graphicUrlElement.getSliderMinChangeFrequency().getValue() in setAllElementAttributes");
@@ -351,6 +370,8 @@ public class PaneController implements Initializable {
         handleToggleFixedFrequency(null);
         toggleFullDay.setSelected(graphicUrlElement.isCheckToggleFullDay());
         handleToggleFullDay(null);
+        toggleNTP.setSelected(graphicUrlElement.isCheckToggleNTP());
+        handleToggleNTP(null);
         sliderChangeFrequency.setValue(graphicUrlElement.getSliderChangeFrequency().getValue());
         sliderContacts.setValue(graphicUrlElement.getSliderContacts().getValue());
         sliderMaxChangeFrequency.setValue(graphicUrlElement.getSliderMaxChangeFrequency().getValue());
@@ -371,9 +392,9 @@ public class PaneController implements Initializable {
         textMinHour.setText(graphicUrlElement.getSleepModeMinHour().getText());
         sleepModeDatePicker.setValue(graphicUrlElement.getSleepModeDate().getValue());
         comboBoxRepeat.setValue(graphicUrlElement.getComboBoxRepeat().getValue());
+        ntpServerUrl.setText(graphicUrlElement.getNtpServerUrl().getText());
         //System.out.println("textMinChangeFrequency.getText() in setAllGraphicalAttributes");
         //System.out.println(textMinChangeFrequency.getText());
-
         //ViewElement Combo stuff
         comboBoxRepeat.setDisable(graphicUrlElement.isCheckDisableComboBox());
     }
@@ -421,6 +442,8 @@ public class PaneController implements Initializable {
         configurationFile.setMaxFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMaxFrequencys()));
 
         configurationFile.setRepeats(StringUtils.fromComboBoxesToStrings(viewAdapter.getComboBoxRepeats()));
+
+        configurationFile.setNetworkTimeServers(StringUtils.fromTextFieldsToStrings(viewAdapter.getNtps()));
         //configurationFile.setProxy(textProxy.getText());
         //configurationFile.setUserAgent(textUserAgent.getText());
         //configurationFile.setContacts(textContacts.getText());

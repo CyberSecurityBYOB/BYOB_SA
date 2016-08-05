@@ -22,6 +22,7 @@ public class ConfigurationFile {
     private GenericList sleepModeMinHours;
     private GenericList sleepModeMaxHours;
     private GenericList repeats;
+    private GenericList networkTimeServers;
 
     public ConfigurationFile(){
         this.version = Versions.NewVersion.getName();
@@ -35,5 +36,6 @@ public class ConfigurationFile {
         this.sleepModeMinHours = new GenericList<>(String.class);
         this.sleepModeMaxHours = new GenericList<>(String.class);
         this.repeats = new GenericList<>(String.class);
+        this.networkTimeServers = new GenericList<>(String.class);
     }
 }
