@@ -1,5 +1,6 @@
 package byob.utils;
 
+import byob.enums.RepeatsHashMap;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class StringUtils {
 
     public static String UNKNOWN = "UNKNOWN";
+    private static RepeatsHashMap repeatsHashMap = new RepeatsHashMap();
 
     public static String capitalize(String s){
         return s.substring(0, 1).toUpperCase() + s.substring(1);
@@ -28,7 +30,13 @@ public class StringUtils {
     }
 
     public static String fromObjectToOptionalString(Object object) {
-        return Optional.ofNullable(object).map(Object::toString).orElse(UNKNOWN);
+        String string = repeatsHashMap.get(Optional.ofNullable(object).map(Object::toString).orElse(UNKNOWN));
+        if (string == null) {
+            return UNKNOWN;
+        }
+        else {
+            return string;
+        }
     }
 
     public static GenericList fromComboBoxesToStrings(GenericList genericList) {

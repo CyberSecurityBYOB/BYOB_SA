@@ -108,6 +108,11 @@ public class PaneController implements Initializable {
         ObservableList<String> options =
         FXCollections.observableArrayList(
                 Repeats.EveryDay.getName(),
+                Repeats.EveryTwoDays.getName(),
+                Repeats.EveryThreeDays.getName(),
+                Repeats.EveryFourDays.getName(),
+                Repeats.EveryFiveDays.getName(),
+                Repeats.EverySixDays.getName(),
                 Repeats.EveryWeek.getName(),
                 Repeats.EveryMonth.getName(),
                 Repeats.EveryYear.getName()

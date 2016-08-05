@@ -5,10 +5,15 @@ package byob.enums;
  */
 public enum Repeats {
 
-    EveryDay ("EveryDay"),
-    EveryWeek ("EveryWeek"),
-    EveryMonth ("EveryMonth"),
-    EveryYear ("EveryYear");
+    EveryDay ("Every Day"),
+    EveryTwoDays ("Every 2 Days"),
+    EveryThreeDays ("Every 3 Days"),
+    EveryFourDays ("Every 4 Days"),
+    EveryFiveDays ("Every 5 Days"),
+    EverySixDays ("Every 6 Days"),
+    EveryWeek ("Every Week"),
+    EveryMonth ("Every Month"),
+    EveryYear ("Every Year");
 
     private String name;
 
@@ -19,4 +24,5 @@ public enum Repeats {
     public String getName(){
         return this.name;
     }
+
 }
