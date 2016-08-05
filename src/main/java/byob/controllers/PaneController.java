@@ -6,7 +6,6 @@ import byob.ViewUrlElement;
 import byob.enums.Repeats;
 import byob.utils.StringUtils;
 import byob.entities.ConfigurationFile;
-import byob.enums.DayHours;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,7 +21,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -70,8 +68,6 @@ public class PaneController implements Initializable {
     @FXML private TextField textUserAgent;
 
     //List of URLs
-    //@FXML private ListView<TextField> urls;
-    //private ObservableList<TextField> items;
     @FXML private ListView<GridPane> urls;
     private ObservableList<GridPane> items;
 
@@ -87,7 +83,6 @@ public class PaneController implements Initializable {
 
     private ToggleGroup toggleGroupUrl;
 
-    //private ArrayList<GraphicUrlElement> urlElements;
     private ArrayList<ViewUrlElement> urlElements;
 
     public void setStage(Stage stage){
@@ -101,11 +96,9 @@ public class PaneController implements Initializable {
 
         toggleGroupUrl = new ToggleGroup();
         items = FXCollections.observableArrayList ();
-        //items.add(new TextField());
         items.add(getUrlGridPane(true));
         urls.setItems(items);
 
-        //urlElements.add(new GraphicUrlElement());
         urlElements.add(new ViewUrlElement());
 
         ObservableList<String> options =
@@ -167,24 +160,17 @@ public class PaneController implements Initializable {
         toggleGroupUrl.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
             public void changed(ObservableValue<? extends Toggle> ov,
                                 Toggle old_toggle, Toggle new_toggle) {
-                //RadioButton radioButton = (RadioButton) toggleGroupUrl.getSelectedToggle();
                 RadioButton oldRadioButton = (RadioButton) old_toggle;
                 RadioButton radioButton = (RadioButton) new_toggle;
                 if (radioButton != null) {
                     GridPane parentGridPane = (GridPane)radioButton.getParent();
                     int index = items.indexOf(parentGridPane);
-                    //System.out.println(index);
                     ViewUrlElement viewUrlElement = urlElements.get(index);
-                    //System.out.println(viewUrlElement.getContacts().getText());
                     //store all the graphical components to the old graphic component
                     int oldIndex = getOldGraphicIndex(old_toggle);
-                    //System.out.println(oldIndex);
                     urlElements.set(oldIndex,getElementFromGraphicComponents());
-                    //System.out.println(urlElements.get(oldIndex).getContacts().getText());
                     //set all attributes to graphical components
                     setAllGraphicalAttributes(viewUrlElement);
-                    //System.out.println("Graphic");
-                    //System.out.println(textContacts.getText());
                 }
             }
         });
@@ -245,30 +231,25 @@ public class PaneController implements Initializable {
             sliderMinHour.setVisible(false);
             sliderMaxHour.setVisible(false);
             maxHourGridPane.setVisible(false);
-            //sleepModeDatePicker.setVisible(true);
             minHourGridPane.setManaged(false);
             maxHourGridPane.setManaged(false);
             sliderMaxHour.setManaged(false);
             sliderMinHour.setManaged(false);
-            //sleepModeDatePicker.setManaged(true);
         }
         else{
             minHourGridPane.setVisible(true);
             sliderMinHour.setVisible(true);
             sliderMaxHour.setVisible(true);
-            //sleepModeDatePicker.setVisible(false);
             maxHourGridPane.setVisible(true);
             minHourGridPane.setManaged(true);
             maxHourGridPane.setManaged(true);
             sliderMaxHour.setManaged(true);
             sliderMinHour.setManaged(true);
-            //sleepModeDatePicker.setManaged(false);
         }
     }
 
     @FXML
     private void addItem(ActionEvent event){
-        //items.add(new TextField());
         items.add(getUrlGridPane(false));
         urlElements.add(new ViewUrlElement());
     }
@@ -340,7 +321,6 @@ public class PaneController implements Initializable {
         graphicUrlElement.getUserAgent().setText(textUserAgent.getText());
         graphicUrlElement.getSleepModeMaxHour().setText(textMaxHour.getText());
         graphicUrlElement.getSleepModeMinHour().setText(textMinHour.getText());
-        //System.out.println(graphicUrlElement.getMinFrequency().getText());
         //ViewUrlElement stuff
         graphicUrlElement.setCheckToggleFixedFrequency(checkToggleFixedFrequency());
         graphicUrlElement.setCheckToggleFullDay(checkToggleFullDay());
@@ -349,19 +329,13 @@ public class PaneController implements Initializable {
         graphicUrlElement.getSliderChangeFrequency().setValue(sliderChangeFrequency.getValue());
         graphicUrlElement.getSliderContacts().setValue(sliderContacts.getValue());
         graphicUrlElement.getSliderMaxHour().setValue(sliderMaxHour.getValue());
-        //Double doubleValue = sliderMinChangeFrequency.valueProperty().getValue();
-        //Integer integerValue = doubleValue.intValue();
-        //graphicUrlElement.getSliderMinChangeFrequency().valueProperty().setValue(integerValue);
         graphicUrlElement.getSliderMinChangeFrequency().setValue(sliderMinChangeFrequency.getValue());
         graphicUrlElement.getSliderMaxChangeFrequency().setValue(sliderMaxChangeFrequency.getValue());
         graphicUrlElement.getSliderMinHour().setValue(sliderMinHour.getValue());
 
         graphicUrlElement.getComboBoxRepeat().setValue(comboBoxRepeat.getValue());
         graphicUrlElement.getNtpServerUrl().setText(ntpServerUrl.getText());
-        //System.out.println("sliderMinChangeFrequency.getValue() in setAllElementAttributes");
-        //System.out.println(sliderMinChangeFrequency.getValue());
-        //System.out.println("graphicUrlElement.getSliderMinChangeFrequency().getValue() in setAllElementAttributes");
-        //System.out.println(graphicUrlElement.getSliderMinChangeFrequency().getValue());
+
     }
 
     private void setAllGraphicalAttributes(ViewUrlElement graphicUrlElement) {
@@ -379,8 +353,6 @@ public class PaneController implements Initializable {
         sliderMinChangeFrequency.setValue(graphicUrlElement.getSliderMinChangeFrequency().getValue());
         sliderMinHour.setValue(graphicUrlElement.getSliderMinHour().getValue());
 
-        //System.out.println(sliderMinChangeFrequency.getValue());
-
         //GraphicUrlElement stuff
         textProxy.setText(graphicUrlElement.getProxy().getText());
         textUserAgent.setText(graphicUrlElement.getUserAgent().getText());
@@ -393,8 +365,6 @@ public class PaneController implements Initializable {
         sleepModeDatePicker.setValue(graphicUrlElement.getSleepModeDate().getValue());
         comboBoxRepeat.setValue(graphicUrlElement.getComboBoxRepeat().getValue());
         ntpServerUrl.setText(graphicUrlElement.getNtpServerUrl().getText());
-        //System.out.println("textMinChangeFrequency.getText() in setAllGraphicalAttributes");
-        //System.out.println(textMinChangeFrequency.getText());
         //ViewElement Combo stuff
         comboBoxRepeat.setDisable(graphicUrlElement.isCheckDisableComboBox());
     }
@@ -419,35 +389,22 @@ public class PaneController implements Initializable {
 
     private ConfigurationFile packageConfiguration(){
         ConfigurationFile configurationFile = new ConfigurationFile();
-        //Optional<TextField> optTextField = Optional.ofNullable(textProxy);
         ViewAdapter viewAdapter = new ViewAdapter(urlElements,items);
         viewAdapter.convert();
 
-        //configurationFile.setProxy(StringUtils.fromTextFieldToOptionalString(textProxy));
         configurationFile.setProxys(StringUtils.fromTextFieldsToStrings(viewAdapter.getProxys()));
-        //configurationFile.setUserAgent(StringUtils.fromTextFieldToOptionalString(textUserAgent));
         configurationFile.setUserAgents(StringUtils.fromTextFieldsToStrings(viewAdapter.getUserAgents()));
-        //configurationFile.setContacts(StringUtils.fromTextToOptionalString(textContacts));
         configurationFile.setContacts(StringUtils.fromTextToStrings(viewAdapter.getContacts()));
-        //configurationFile.setSleepModeDate(StringUtils.fromDatePickerToOptionalString(sleepModeDatePicker));
         configurationFile.setSleepModeDates(StringUtils.fromDatePickersToStrings(viewAdapter.getSleepModeDates()));
-        //configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(ur));
         configurationFile.setUrls(StringUtils.fromTextFieldsToStrings(viewAdapter.getUrls()));
 
         //Transferred to the ViewAdapter
         configurationFile.setSleepModeMinHours(StringUtils.fromTextToStrings(viewAdapter.getSleepModeMinHours()));
         configurationFile.setSleepModeMaxHours(StringUtils.fromTextToStrings(viewAdapter.getSleepModeMaxHours()));
-
         configurationFile.setMinFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMinFrequencys()));
         configurationFile.setMaxFrequencys(StringUtils.fromTextToStrings(viewAdapter.getMaxFrequencys()));
-
         configurationFile.setRepeats(StringUtils.fromComboBoxesToStrings(viewAdapter.getComboBoxRepeats()));
-
         configurationFile.setNetworkTimeServers(StringUtils.fromTextFieldsToStrings(viewAdapter.getNtps()));
-        //configurationFile.setProxy(textProxy.getText());
-        //configurationFile.setUserAgent(textUserAgent.getText());
-        //configurationFile.setContacts(textContacts.getText());
-        //configurationFile.setSleepModeDate(sleepModeDatePicker.getValue().toString());
 
         return configurationFile;
     }

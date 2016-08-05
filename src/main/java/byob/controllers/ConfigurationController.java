@@ -44,7 +44,6 @@ public class ConfigurationController {
     }
 
     public void writeFile(){
-        //String path = FilePaths.BYOB_SA.getPath();
         String path = this.filePath;
 
         List<String> lines = new ArrayList<String>();
@@ -58,8 +57,6 @@ public class ConfigurationController {
                 if (StringUtils.isWritableString(obj)){
                     System.out.println(StringUtils.capitalize(field.getName()));
                     System.out.println(obj);
-                    //lines.add(StringUtils.capitalize(field.getName()));
-                    //lines.add((String) obj);
                     String objInString = (String) obj;
                     rowString = StringUtils.capitalize(field.getName());
                     rowString = rowString + " " + objInString;
@@ -69,12 +66,10 @@ public class ConfigurationController {
                     if (StringUtils.isPrintableGenericList(obj)) {
                         GenericList strings = (GenericList) obj;
                         System.out.println(StringUtils.capitalize(field.getName()));
-                        //lines.add(StringUtils.capitalize(field.getName()));
                         rowString = StringUtils.capitalize(field.getName());
                         for (Object string : strings) {
                             if (StringUtils.isWritableString(string)) {
                                 System.out.println(string);
-                                //lines.add((String) string);
                                 String objInString = (String) string;
                                 rowString = rowString + " " + objInString;
                             }
