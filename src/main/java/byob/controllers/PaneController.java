@@ -253,7 +253,6 @@ public class PaneController implements Initializable {
         items.add(getUrlGridPane(false));
         ViewUrlElement viewUrlElement = new ViewUrlElement();
         urlElements.add(viewUrlElement);
-        System.out.println("ViewUrlElement " + String.valueOf(viewUrlElement.getSliderMinHour().getValue()));
     }
 
     @FXML
@@ -355,7 +354,6 @@ public class PaneController implements Initializable {
         sliderContacts.setValue(graphicUrlElement.getSliderContacts().getValue());
         sliderMaxChangeFrequency.setValue(graphicUrlElement.getSliderMaxChangeFrequency().getValue());
         sliderMaxHour.setValue(graphicUrlElement.getSliderMaxHour().getValue());
-        System.out.println("Slider max hour " + String.valueOf(graphicUrlElement.getSliderMaxHour().getValue()));
         sliderMinChangeFrequency.setValue(graphicUrlElement.getSliderMinChangeFrequency().getValue());
         sliderMinHour.setValue(graphicUrlElement.getSliderMinHour().getValue());
 

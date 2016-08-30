@@ -17,7 +17,6 @@ public class ConfigurationFile {
     private GenericList contacts;
     private GenericList minFrequencys;
     private GenericList maxFrequencys;
-    //private GenericList fixedFrequencys;
     private GenericList sleepModeDates;
     private GenericList sleepModeMinHours;
     private GenericList sleepModeMaxHours;

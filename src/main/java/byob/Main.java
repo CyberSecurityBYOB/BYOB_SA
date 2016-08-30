@@ -11,7 +11,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("/view_main.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view_main.fxml"));
         Parent root = loader.load();
         PaneController controller = loader.getController();

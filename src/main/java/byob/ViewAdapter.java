@@ -24,7 +24,6 @@ public class ViewAdapter {
     private GenericList<Text> contacts;
     private GenericList<Text> minFrequencys;
     private GenericList<Text> maxFrequencys;
-    //private GenericList<Text> fixedFrequencys;
     private GenericList<DatePicker> sleepModeDates;
     private GenericList<Text> sleepModeMinHours;
     private GenericList<Text> sleepModeMaxHours;
