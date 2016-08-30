@@ -251,7 +251,9 @@ public class PaneController implements Initializable {
     @FXML
     private void addItem(ActionEvent event){
         items.add(getUrlGridPane(false));
-        urlElements.add(new ViewUrlElement());
+        ViewUrlElement viewUrlElement = new ViewUrlElement();
+        urlElements.add(viewUrlElement);
+        System.out.println("ViewUrlElement " + String.valueOf(viewUrlElement.getSliderMinHour().getValue()));
     }
 
     @FXML
@@ -299,8 +301,11 @@ public class PaneController implements Initializable {
         sliderChangeFrequency.setValue(sliderChangeFrequency.getMin());
         sliderContacts.setValue(sliderContacts.getMin());
         sliderMinChangeFrequency.setValue(sliderMinChangeFrequency.getMin());
-        sliderMaxHour.setValue(sliderMaxHour.getValue());
-        sliderMinHour.setValue(sliderMinHour.getValue());
+        //sliderMaxHour.setValue(sliderMaxHour.getValue());
+        sliderMaxHour.setValue(sliderMaxHour.getMin());
+        //sliderMinHour.setValue(sliderMinHour.getValue());
+        sliderMinHour.setValue(sliderMinHour.getMin());
+
 
         textMaxChangeFrequency.setText("");
         textContacts.setText("");
@@ -350,6 +355,7 @@ public class PaneController implements Initializable {
         sliderContacts.setValue(graphicUrlElement.getSliderContacts().getValue());
         sliderMaxChangeFrequency.setValue(graphicUrlElement.getSliderMaxChangeFrequency().getValue());
         sliderMaxHour.setValue(graphicUrlElement.getSliderMaxHour().getValue());
+        System.out.println("Slider max hour " + String.valueOf(graphicUrlElement.getSliderMaxHour().getValue()));
         sliderMinChangeFrequency.setValue(graphicUrlElement.getSliderMinChangeFrequency().getValue());
         sliderMinHour.setValue(graphicUrlElement.getSliderMinHour().getValue());
 

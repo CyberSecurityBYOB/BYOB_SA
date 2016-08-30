@@ -31,5 +31,7 @@ public class ViewUrlElement extends GraphicUrlElement{
         sliderMaxHour = new Slider(0,23,1);
         sliderMinChangeFrequency = new Slider(1,3600,1);
         sliderMinHour = new Slider(0,23,1);
+        sliderMinHour.setValue(sliderMinHour.getMin());
+        sliderMaxHour.setValue(sliderMaxHour.getMin());
     }
 }
