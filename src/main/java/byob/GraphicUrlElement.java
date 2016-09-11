@@ -43,4 +43,5 @@ public class GraphicUrlElement {
         comboBoxRepeat = new ComboBox();
         ntpServerUrl = new TextField("");
     }
+
 }
